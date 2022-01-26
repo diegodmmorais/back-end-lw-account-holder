@@ -1,3 +1,4 @@
+
 # LW ACCOUNT HOLDER
 ## Projeto utilizado para aplicar clean architecture
 
@@ -33,3 +34,6 @@ Nos basearemos em clean architecture.
 - Tipo de cliente: NC=new customer, IC=inactive customer e AC= active customer
 - Documento de identificação(CPF)
 - Código unido do cliente no banco.
+
+#### Qual a linguagem de programação utilizaremos?
+Nesse pequeno projeto, utilizaremos apenas Java.
