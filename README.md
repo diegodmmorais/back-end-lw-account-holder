@@ -31,7 +31,7 @@ Nos basearemos em clean architecture.
  - Código único do cliente no Banco.(Todo cliente tem um código único no banco)
  
 #### Quais os dados de saída?
-- Tipo de cliente: NC=new customer, IC=inactive customer e AC= active customer
+- Tipo de cliente: NC=new customer, IC=inactive customer ou AC= active customer
 - Documento de identificação(CPF)
 - Código unido do cliente no banco.
 
