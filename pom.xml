@@ -16,6 +16,7 @@
     <module>presenters</module>
     <module>apigateway</module>
     <module>application</module>
+    <module>repositories</module>
   </modules>
 
   <properties>

@@ -14,7 +14,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Customer interactor builder test")
-class CustomerInteractorBuilderTest {
+class CustomerInteractorFactoryTest {
 
   @Mock
   IAccountHolderGateway accountHolderGateway;
@@ -26,7 +26,7 @@ class CustomerInteractorBuilderTest {
   @Test
   @DisplayName("1 - create account holder gateway")
   void createAccountHolderGateway() {
-    final var customerInputBoundary = CustomerInteractorBuilder.builder()
+    final var customerInputBoundary = CustomerInteractorFactory.builder()
                                                                .create(accountHolderGateway, bankAccountGateway, customerPresenter);
     Assertions.assertThat(customerInputBoundary).isNotNull();
   }

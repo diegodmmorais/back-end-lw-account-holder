@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
  * @author diegomorais
  */
 @DisplayName("Customer presenter builder test")
-class CustomerPresenterBuilderTest {
+class CustomerPresenterFactoryTest {
 
   @Test
   @DisplayName("1 - Create customer presenter")
   void CreateCustomerPresenter() {
-    final var customerPresenter = CustomerPresenterBuilder.builder().create();
+    final var customerPresenter = CustomerPresenterFactory.builder().create();
     Assertions.assertThat(customerPresenter).isNotNull();
   }
 }

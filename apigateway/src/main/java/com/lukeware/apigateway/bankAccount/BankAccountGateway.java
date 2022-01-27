@@ -3,25 +3,25 @@ package com.lukeware.apigateway.bankAccount;
 import com.lukeware.usecases.banckaccount.BankAccountResponse;
 import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 
-import java.time.LocalDate;
 import java.util.Set;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * @author Diego Morais
  */
-final record BankAccountGateway() implements IBankAccountGateway {
+final record BankAccountGateway(IBankAccountRegisterDsGateway accountRegisterDsGateway) implements IBankAccountGateway {
 
   @Override
   public Set<BankAccountResponse> findAll(String identifierCode) {
-    final var bankAccount = new BankAccountResponse(
-        String.valueOf(Math.round(Math.random() * 1000)),
-        true,
-        false,
-        "CHECKING_ACCOUNT",
-        LocalDate.now().minusDays(190),
-        LocalDate.now().minusDays(80));
-    return Stream.of(bankAccount).collect(Collectors.toSet());
+    return this.accountRegisterDsGateway.findAll(identifierCode)
+                                        .stream()
+                                        .map(banckAccount ->
+                                              new BankAccountResponse(banckAccount.identifierCode(),
+                                                                      banckAccount.active(),
+                                                                      banckAccount.externalMovement(),
+                                                                      banckAccount.type(),
+                                                                      banckAccount.openDate(),
+                                                                      banckAccount.lastMoveDate())
+                                     ).collect(Collectors.toSet());
   }
 }

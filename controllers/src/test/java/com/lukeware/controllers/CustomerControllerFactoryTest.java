@@ -13,7 +13,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Customer controller builder test")
-class CustomerControllerBuilderTest {
+class CustomerControllerFactoryTest {
 
   @Mock
   ICustomerInputBoundary iCustomerInputBoundary;
@@ -22,7 +22,7 @@ class CustomerControllerBuilderTest {
   @DisplayName("1 - Create customer controller")
   void CreateCustomerController() {
 
-    final var customerController = CustomerControllerBuilder.builder().create(iCustomerInputBoundary);
+    final var customerController = CustomerControllerFactory.builder().create(iCustomerInputBoundary);
 
     Assertions.assertThat(customerController).isNotNull();
   }

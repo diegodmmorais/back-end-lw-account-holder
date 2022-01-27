@@ -5,9 +5,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDate;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * @author Diego Morais
@@ -18,24 +22,37 @@ class BankAccountGatewayTest {
 
   @InjectMocks
   BankAccountGateway bankAccountGateway;
+  @Mock
+  IBankAccountRegisterDsGateway accountRegisterDsGateway;
+
 
   @Test
   @DisplayName("1 - Find all account holders")
   void FindAllBankAccounts() {
+    /* preparation */
+    final var accountDsResponse = new BankAccountDsResponse("789123456",
+                                                            true,
+                                                            false,
+                                                            "CHECKING_ACCOUNT",
+                                                            LocalDate.now().minusDays(190),
+                                                            LocalDate.now().minusDays(80));
+    final var bankAccounts = Stream.of(accountDsResponse).collect(Collectors.toSet());
+
+    Mockito.lenient().when(accountRegisterDsGateway.findAll("789123456")).thenReturn(bankAccounts);
+
+    /* execution */
     final var accountHolders = bankAccountGateway.findAll("789123456");
 
+    /* validation */
     Assertions.assertThat(accountHolders).isNotNull().isNotEmpty().hasSize(1);
-    Assertions.assertThat(accountHolders.stream().findFirst().isPresent()).isTrue();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().identifierCode())
-              .isNotBlank()
-              .isNotBlank();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().active()).isTrue();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().externalMovement()).isFalse();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().type()).isEqualTo("CHECKING_ACCOUNT");
-    Assertions.assertThat(accountHolders.stream().findFirst().get().lastMoveDate())
-              .isEqualTo(LocalDate.now().minusDays(80));
-    Assertions.assertThat(accountHolders.stream().findFirst().get().openDate())
-              .isEqualTo(LocalDate.now().minusDays(190));
+    final var bankAccountResponse = accountHolders.stream().findFirst();
+    Assertions.assertThat(bankAccountResponse.isPresent()).isTrue();
+    Assertions.assertThat(bankAccountResponse.get().identifierCode()).isNotBlank().isNotBlank();
+    Assertions.assertThat(bankAccountResponse.get().active()).isTrue();
+    Assertions.assertThat(bankAccountResponse.get().externalMovement()).isFalse();
+    Assertions.assertThat(bankAccountResponse.get().type()).isEqualTo("CHECKING_ACCOUNT");
+    Assertions.assertThat(bankAccountResponse.get().lastMoveDate()).isEqualTo(LocalDate.now().minusDays(80));
+    Assertions.assertThat(bankAccountResponse.get().openDate()).isEqualTo(LocalDate.now().minusDays(190));
   }
 
 }

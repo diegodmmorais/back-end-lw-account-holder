@@ -8,19 +8,19 @@ import java.util.Objects;
 /**
  * @author Diego Morais
  */
-public final class CustomerInteractorBuilder {
+public final class CustomerInteractorFactory {
 
-  private static CustomerInteractorBuilder customerInteractorBuilder;
+  private static CustomerInteractorFactory customerInteractorFactory;
 
-  private CustomerInteractorBuilder() {
+  private CustomerInteractorFactory() {
     super();
   }
 
-  public synchronized static CustomerInteractorBuilder builder() {
-    if (Objects.isNull(customerInteractorBuilder)) {
-      customerInteractorBuilder = new CustomerInteractorBuilder();
+  public synchronized static CustomerInteractorFactory builder() {
+    if (Objects.isNull(customerInteractorFactory)) {
+      customerInteractorFactory = new CustomerInteractorFactory();
     }
-    return customerInteractorBuilder;
+    return customerInteractorFactory;
   }
 
   public ICustomerInputBoundary create(IAccountHolderGateway accountHolderGateway, IBankAccountGateway bankAccountGateway, ICustomerPresenter customerPresenter) {

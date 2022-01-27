@@ -17,16 +17,18 @@ class AccountHolderGatewayTest {
   @InjectMocks
   AccountHolderGateway accountHolderGateway;
 
+
+
   @Test
   @DisplayName("1 - Find all account holders")
   void FindAllAccountHolders(){
-    final var accountHolders = accountHolderGateway.findAll("789123456");
+    final var accountHolders = accountHolderGateway.findAll("789123465");
 
-    Assertions.assertThat(accountHolders).isNotNull().isNotEmpty().hasSize(3);
+    Assertions.assertThat(accountHolders).isNotNull().isNotEmpty().hasSize(1);
     Assertions.assertThat(accountHolders.stream().findFirst().isPresent()).isTrue();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().identifierCode()).isNotBlank().isEqualTo("789123741");
-    Assertions.assertThat(accountHolders.stream().findFirst().get().owner()).isFalse();
-    Assertions.assertThat(accountHolders.stream().findFirst().get().sequence()).isEqualTo(3);
+    Assertions.assertThat(accountHolders.stream().findFirst().get().identifierCode()).isNotBlank().isEqualTo("789123465");
+    Assertions.assertThat(accountHolders.stream().findFirst().get().owner()).isTrue();
+    Assertions.assertThat(accountHolders.stream().findFirst().get().sequence()).isEqualTo(1);
   }
 
 }

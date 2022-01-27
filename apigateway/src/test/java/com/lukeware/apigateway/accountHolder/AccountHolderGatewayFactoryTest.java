@@ -8,12 +8,12 @@ import org.junit.jupiter.api.Test;
  * @author Diego Morais
  */
 @DisplayName("Account holder gateway builder test")
-class AccountHolderGatewayBuilderTest {
+class AccountHolderGatewayFactoryTest {
 
   @Test
   @DisplayName("1 - create account holder gateway")
   void createAccountHolderGateway() {
-    final var accountHolderGateway = AccountHolderGatewayBuilder.builder().create();
+    final var accountHolderGateway = AccountHolderGatewayFactory.builder().create();
     Assertions.assertThat(accountHolderGateway).isNotNull();
   }
 
