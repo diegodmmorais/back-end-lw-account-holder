@@ -16,98 +16,93 @@ import java.util.stream.Collectors;
 /**
  * @author Diego Morais
  */
-class CustomerInteractor implements ICustomerInteractor {
+record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
+                          IBankAccountGateway bankAccountGateway,
+                          ICustomerPresenter customerPresenter) implements ICustomerInputBoundary {
 
-    public static final String CHECKING_ACCOUNT = "CHECKING_ACCOUNT";
-    private final IAccountHolderGateway iAccountHolderGateway;
-    private final IBankAccountGateway bankAccountGateway;
+  private static final String CHECKING_ACCOUNT = "CHECKING_ACCOUNT";
 
-    CustomerInteractor(IAccountHolderGateway iAccountHolderGateway, IBankAccountGateway bankAccountGateway) {
-        this.iAccountHolderGateway = iAccountHolderGateway;
-        this.bankAccountGateway = bankAccountGateway;
+  @Override
+  public CustomerResponse validateActiveCustomer(CustomerRequest customerRequest) {
+
+    final var bankAccounts = findAllBankAccount(customerRequest);
+    final var accounts = bankAccounts.stream()
+                                     .filter(account -> CHECKING_ACCOUNT.equals(account.type()))
+                                     .map(bankAccount -> getAccount(customerRequest, bankAccount))
+                                     .collect(Collectors.toSet());
+
+    final var accountWithAccountHolder = getAccountWithAccountHolder(accounts);
+    if (accountWithAccountHolder.isEmpty()) {
+      return createCustomerResponse(customerRequest, TypeCustomer.NC);
     }
 
-    @Override
-    public CustomerResponse validateActiveCustomer(CustomerRequest customerRequest) {
-
-        final var bankAccounts = findAllBankAccount(customerRequest);
-        final var accounts = bankAccounts.stream()
-                                         .filter(account -> CHECKING_ACCOUNT.equals(account.type()))
-                                         .map(bankAccount -> getAccount(customerRequest, bankAccount))
-                                         .collect(Collectors.toSet());
-
-        final var accountWithAccountHolder = getAccountWithAccountHolder(accounts);
-        if (accountWithAccountHolder.isEmpty()) {
-            return createCustomerResponse(customerRequest, TypeCustomer.NC);
-        }
-
-        final var optIAccountActive = getAccountActive(accountWithAccountHolder);
-        if (optIAccountActive.isEmpty()) {
-            return createCustomerResponse(customerRequest, TypeCustomer.IC);
-        }
-
-        return createCustomerResponse(customerRequest, TypeCustomer.AC);
+    final var optIAccountActive = getAccountActive(accountWithAccountHolder);
+    if (optIAccountActive.isEmpty()) {
+      return createCustomerResponse(customerRequest, TypeCustomer.IC);
     }
 
-    private Set<IAccount> getAccountWithAccountHolder(Set<IAccount> accounts) {
-        return getAccountsWithRule(accounts, account -> account.isAccountHolder());
-    }
+    return createCustomerResponse(customerRequest, TypeCustomer.AC);
+  }
 
-    private Set<IAccount> getAccountActive(Set<IAccount> accounts) {
-        return getAccountsWithRule(accounts, account -> account.isActiveAccount());
-    }
+  private Set<IAccount> getAccountWithAccountHolder(Set<IAccount> accounts) {
+    return getAccountsWithRule(accounts, account -> account.isAccountHolder());
+  }
 
-    private CustomerResponse createCustomerResponse(CustomerRequest customerRequest, TypeCustomer type) {
-        return new CustomerResponse(customerRequest.identifierCode(), customerRequest.identifierDocument(), type);
-    }
+  private Set<IAccount> getAccountActive(Set<IAccount> accounts) {
+    return getAccountsWithRule(accounts, account -> account.isActiveAccount());
+  }
 
-    private Set<IAccount> getAccountsWithRule(Set<IAccount> accounts, Predicate<IAccount> filter) {
-        return accounts.stream()
-                       .filter(filter)
-                       .collect(Collectors.toSet());
-    }
+  private CustomerResponse createCustomerResponse(CustomerRequest customerRequest, TypeCustomer type) {
+    return customerPresenter.successView(new CustomerResponse(customerRequest.identifierCode(), customerRequest.identifierDocument(), type));
+  }
 
-    private IAccount getAccount(CustomerRequest customerRequest, BankAccountResponse bankAccount) {
-        final var accountHolders = findAllAccountHolders(bankAccount);
-        final var accountHolder = toaccountHolder(customerRequest, accountHolders);
-        return toAccount(bankAccount, accountHolder);
-    }
+  private Set<IAccount> getAccountsWithRule(Set<IAccount> accounts, Predicate<IAccount> filter) {
+    return accounts.stream()
+                   .filter(filter)
+                   .collect(Collectors.toSet());
+  }
 
-
-    private Set<BankAccountResponse> findAllBankAccount(CustomerRequest customerRequest) {
-        return this.bankAccountGateway.findAll(customerRequest.identifierCode());
-    }
-
-    private Set<AccountHolderResponse> findAllAccountHolders(BankAccountResponse bankAccount) {
-        return this.iAccountHolderGateway.findAll(bankAccount.identifierCode());
-    }
+  private IAccount getAccount(CustomerRequest customerRequest, BankAccountResponse bankAccount) {
+    final var accountHolders = findAllAccountHolders(bankAccount);
+    final var accountHolder = toaccountHolder(customerRequest, accountHolders);
+    return toAccount(bankAccount, accountHolder);
+  }
 
 
-    private Set<IAccountHolder> toaccountHolder(CustomerRequest customerRequest, Set<AccountHolderResponse> accountHolders) {
-        return accountHolders.stream()
-                             .map(accountHolder -> toaccountHolder(customerRequest, accountHolder))
-                             .collect(Collectors.toSet());
-    }
+  private Set<BankAccountResponse> findAllBankAccount(CustomerRequest customerRequest) {
+    return this.bankAccountGateway.findAll(customerRequest.identifierCode());
+  }
 
-    private IAccountHolder toaccountHolder(CustomerRequest customerRequest, AccountHolderResponse accountHolder) {
-        return AccountHolderBuilder.builder()
-                                   .identifierCode(accountHolder.identifierCode())
-                                   .identifierDocument(customerRequest.identifierDocument())
-                                   .sequence(accountHolder.sequence())
-                                   .owner(accountHolder.owner())
-                                   .build();
-    }
+  private Set<AccountHolderResponse> findAllAccountHolders(BankAccountResponse bankAccount) {
+    return this.iAccountHolderGateway.findAll(bankAccount.identifierCode());
+  }
 
-    private IAccount toAccount(BankAccountResponse bankAccount, Set<IAccountHolder> accountHolder) {
-        return AccountBuilder.builder()
-                             .active(bankAccount.active())
-                             .externalMovement(bankAccount.externalMovement())
-                             .lastMoveDate(bankAccount.lastMoveDate())
-                             .openDate(bankAccount.openDate())
-                             .type(bankAccount.type())
-                             .ownersAccount(accountHolder)
-                             .build();
-    }
+
+  private Set<IAccountHolder> toaccountHolder(CustomerRequest customerRequest, Set<AccountHolderResponse> accountHolders) {
+    return accountHolders.stream()
+                         .map(accountHolder -> toaccountHolder(customerRequest, accountHolder))
+                         .collect(Collectors.toSet());
+  }
+
+  private IAccountHolder toaccountHolder(CustomerRequest customerRequest, AccountHolderResponse accountHolder) {
+    return AccountHolderBuilder.builder()
+                               .identifierCode(accountHolder.identifierCode())
+                               .identifierDocument(customerRequest.identifierDocument())
+                               .sequence(accountHolder.sequence())
+                               .owner(accountHolder.owner())
+                               .build();
+  }
+
+  private IAccount toAccount(BankAccountResponse bankAccount, Set<IAccountHolder> accountHolder) {
+    return AccountBuilder.builder()
+                         .active(bankAccount.active())
+                         .externalMovement(bankAccount.externalMovement())
+                         .lastMoveDate(bankAccount.lastMoveDate())
+                         .openDate(bankAccount.openDate())
+                         .type(bankAccount.type())
+                         .ownersAccount(accountHolder)
+                         .build();
+  }
 
 
 }

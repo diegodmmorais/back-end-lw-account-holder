@@ -6,4 +6,5 @@ package com.lukeware.entities.accountholder;
 final record AccountHolder(String identifierDocument,
                            String identifierCode,
                            boolean owner,
-                           int sequence) implements IAccountHolder {}
+                           int sequence) implements IAccountHolder {
+}

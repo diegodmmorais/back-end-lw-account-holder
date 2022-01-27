@@ -5,10 +5,10 @@ package com.lukeware.entities.accountholder;
  */
 public interface IAccountHolder {
   boolean owner();
-  
+
   String identifierDocument();
-  
+
   String identifierCode();
-  
+
   int sequence();
 }

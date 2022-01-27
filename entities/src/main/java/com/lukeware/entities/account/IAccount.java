@@ -10,17 +10,17 @@ import java.util.Set;
  */
 public interface IAccount {
   boolean isActiveAccount();
-  
+
   boolean isAccountHolder();
-  
+
   boolean isExternalMovement();
-  
+
   TypeAccount type();
-  
+
   LocalDate openDate();
-  
+
   LocalDate lastMoveDate();
-  
+
   Set<IAccountHolder> accountHolders();
-  
+
 }
