@@ -1,7 +1,5 @@
 package com.lukeware.usecases.customer;
 
-import java.util.Objects;
-
 /**
  * @author Diego Morais
  */

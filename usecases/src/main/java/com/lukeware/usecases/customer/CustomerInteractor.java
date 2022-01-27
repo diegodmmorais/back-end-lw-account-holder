@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
  * @author Diego Morais
  */
 final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
-                          IBankAccountGateway bankAccountGateway,
-                          ICustomerPresenter customerPresenter) implements ICustomerInputBoundary {
+                                IBankAccountGateway bankAccountGateway,
+                                ICustomerPresenter customerPresenter) implements ICustomerInputBoundary {
 
   private static final String CHECKING_ACCOUNT = "CHECKING_ACCOUNT";
 
