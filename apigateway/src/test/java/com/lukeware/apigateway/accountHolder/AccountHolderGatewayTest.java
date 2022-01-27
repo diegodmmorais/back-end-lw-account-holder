@@ -1,16 +1,11 @@
 package com.lukeware.apigateway.accountHolder;
 
-import com.lukeware.usecases.accountholder.AccountHolderResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.junit.jupiter.MockitoExtension;
-
-import java.util.Set;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Diego Morais

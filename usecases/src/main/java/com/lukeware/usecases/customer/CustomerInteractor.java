@@ -24,7 +24,6 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
 
   @Override
   public CustomerResponse validateActiveCustomer(CustomerRequest customerRequest) {
-
     final var bankAccounts = findAllBankAccount(customerRequest);
     final var accounts = bankAccounts.stream()
                                      .filter(account -> CHECKING_ACCOUNT.equals(account.type()))

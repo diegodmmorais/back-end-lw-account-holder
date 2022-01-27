@@ -16,7 +16,7 @@ final record BankAccountGateway() implements IBankAccountGateway {
   @Override
   public Set<BankAccountResponse> findAll(String identifierCode) {
     final var bankAccount = new BankAccountResponse(
-        String.valueOf(Math.round(Math.random())),
+        String.valueOf(Math.round(Math.random() * 1000)),
         true,
         false,
         "CHECKING_ACCOUNT",
