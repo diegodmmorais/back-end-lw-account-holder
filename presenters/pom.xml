@@ -9,8 +9,8 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.lukeware.presenter</groupId>
-  <artifactId>presenter</artifactId>
+  <groupId>com.lukeware.presenters</groupId>
+  <artifactId>presenters</artifactId>
   <version>0.1.0-SNAPSHOT</version>
 
   <dependencies>

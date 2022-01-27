@@ -12,20 +12,39 @@
   <modules>
     <module>entities</module>
     <module>usecases</module>
-    <module>presenter</module>
+    <module>controllers</module>
+    <module>presenters</module>
+    <module>application</module>
   </modules>
 
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
     <surefire.version>3.0.0-M5</surefire.version>
-    <junit-jupiter-engine.version>5.8.2</junit-jupiter-engine.version>
     <assertj-core.version>3.22.0</assertj-core.version>
     <mockito-junit-jupiter.version>4.3.0</mockito-junit-jupiter.version>
+    <spring-boot-dependencies.version>2.6.3</spring-boot-dependencies.version>
+    <junit-jupiter.version>5.8.2</junit-jupiter.version>
+    <junit-jupiter-engine.version>${junit-jupiter.version}</junit-jupiter-engine.version>
+    <junit-jupiter-api.version>${junit-jupiter.version}</junit-jupiter-api.version>
+    <spring-test.version>5.3.15</spring-test.version>
+    <servlet-api.version>2.3</servlet-api.version>
   </properties>
 
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-dependencies</artifactId>
+        <version>${spring-boot-dependencies.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>${servlet-api.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.junit.jupiter</groupId>
         <artifactId>junit-jupiter-engine</artifactId>
@@ -42,6 +61,37 @@
         <groupId>org.mockito</groupId>
         <artifactId>mockito-junit-jupiter</artifactId>
         <version>${mockito-junit-jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <exclusions>
+          <exclusion>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+          </exclusion>
+        </exclusions>
         <scope>test</scope>
       </dependency>
     </dependencies>

@@ -12,8 +12,8 @@ public final class CustomerResponse {
   private String message;
 
   public CustomerResponse(String identifierCode,
-                   String identifierDocument,
-                   TypeCustomer type) {
+                          String identifierDocument,
+                          TypeCustomer type) {
     this.identifierCode = identifierCode;
     this.identifierDocument = identifierDocument;
     this.type = type;
@@ -40,25 +40,4 @@ public final class CustomerResponse {
     this.message = message;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    CustomerResponse that = (CustomerResponse) o;
-    return Objects.equals(identifierCode, that.identifierCode) && Objects.equals(identifierDocument, that.identifierDocument) && type == that.type;
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(identifierCode, identifierDocument, type);
-  }
-
-  @Override
-  public String toString() {
-    return "CustomerResponse{" +
-        "identifierCode='" + identifierCode + '\'' +
-        ", identifierDocument='" + identifierDocument + '\'' +
-        ", type=" + type +
-        '}';
-  }
 }

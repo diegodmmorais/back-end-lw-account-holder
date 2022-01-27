@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 /**
  * @author Diego Morais
  */
-record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
+final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
                           IBankAccountGateway bankAccountGateway,
                           ICustomerPresenter customerPresenter) implements ICustomerInputBoundary {
 

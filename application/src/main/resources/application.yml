@@ -1,0 +1,13 @@
+server:
+  tomcat:
+    max-threads: 4
+  compression:
+    enabled: true
+    mime-types: 'application/json'
+    min-response-size: 1024
+
+spring:
+  jackson:
+    default-property-inclusion: 'NON_NULL'
+
+

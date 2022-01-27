@@ -1,4 +1,4 @@
-package com.lukeware.presenter;
+package com.lukeware.presenters;
 
 import com.lukeware.usecases.customer.CustomerResponse;
 import com.lukeware.usecases.customer.ICustomerPresenter;
