@@ -36,4 +36,4 @@ Nos basearemos em clean architecture.
 - Código unido do cliente no banco.
 
 #### Qual a linguagem de programação utilizaremos?
-Nesse pequeno projeto, utilizaremos apenas Java.
+Nesse pequeno projeto, utilizaremos apenas Java na versão 17.
