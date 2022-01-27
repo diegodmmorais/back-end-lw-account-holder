@@ -14,8 +14,8 @@
     <module>usecases</module>
     <module>controllers</module>
     <module>presenters</module>
-    <module>application</module>
     <module>apigateway</module>
+    <module>application</module>
   </modules>
 
   <properties>
@@ -93,6 +93,7 @@
             <artifactId>spring-core</artifactId>
           </exclusion>
         </exclusions>
+        <version>${spring-boot-dependencies.version}</version>
         <scope>test</scope>
       </dependency>
     </dependencies>

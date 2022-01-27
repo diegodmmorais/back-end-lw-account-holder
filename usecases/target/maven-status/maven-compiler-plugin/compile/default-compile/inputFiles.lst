@@ -1,0 +1,12 @@
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/CustomerRequest.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/CustomerInteractorBuilder.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/banckaccount/BankAccountResponse.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/CustomerResponse.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/banckaccount/IBankAccountGateway.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/accountholder/AccountHolderResponse.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/accountholder/IAccountHolderGateway.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/CustomerInteractor.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/IGateway.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/ICustomerPresenter.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/TypeCustomer.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/usecases/src/main/java/com/lukeware/usecases/customer/ICustomerInputBoundary.java
