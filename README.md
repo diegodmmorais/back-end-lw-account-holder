@@ -12,11 +12,11 @@ anti-fraude.
 
 #### O que será implementado?
 
-- [ ] Validar se o cliente tem uma conta corrente PF ativa
-- [ ] Validar se o cliente é titular da conta corrente PF
-- [ ] Validar se a conta corrente PF, está aberta a mais de 179 dias
-- [ ] Validar se a última movimentação do cliente foi realizado no últimos 90 dias
-- [ ] Validar se a conta esta aberta para outros produtos.
+- [x] Validar se o cliente tem uma conta corrente PF ativa
+- [x] Validar se o cliente é titular da conta corrente PF
+- [x] Validar se a conta corrente PF, está aberta a mais de 179 dias
+- [x] Validar se a última movimentação do cliente foi realizado no últimos 90 dias
+- [x] Validar se a conta esta aberta para outros produtos.
 
 Se todas essas validações forrem verdadeira o cliente é considerado ativo. No nosso caso a conta poderá ter mais de um
 titular.
