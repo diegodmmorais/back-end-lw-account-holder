@@ -15,6 +15,7 @@
     <module>controllers</module>
     <module>presenters</module>
     <module>application</module>
+    <module>apigateway</module>
   </modules>
 
   <properties>

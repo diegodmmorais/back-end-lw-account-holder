@@ -1,5 +1,7 @@
 package com.lukeware.usecases.customer;
 
+import java.util.Objects;
+
 /**
  * @author Diego Morais
  */
@@ -38,4 +40,16 @@ public final class CustomerResponse {
     this.message = message;
   }
 
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    CustomerResponse that = (CustomerResponse) o;
+    return Objects.equals(identifierCode, that.identifierCode) && Objects.equals(identifierDocument, that.identifierDocument) && type == that.type;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(identifierCode, identifierDocument, type);
+  }
 }

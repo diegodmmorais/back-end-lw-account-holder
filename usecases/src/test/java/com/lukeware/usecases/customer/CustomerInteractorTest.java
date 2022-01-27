@@ -49,6 +49,8 @@ class CustomerInteractorTest {
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
+    Assertions.assertThat(response.hashCode()).isNotNull();
+    Assertions.assertThat(response.equals(response)).isNotNull();
     Assertions.assertThat(response.getType()).isNotNull().isEqualTo(TypeCustomer.NC);
     Assertions.assertThat(response.getIdentifierCode()).isNotNull().isEqualTo("789123456");
     Assertions.assertThat(response.getIdentifierDocument()).isNotNull().isEqualTo("999.999.999-99");

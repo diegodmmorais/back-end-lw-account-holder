@@ -1,10 +1,14 @@
 package com.lukeware.application;
 
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 /**
  * @author Diego Morais
  */
-public record Application() {
-  public static void main(String[] args) {
-
+@SpringBootApplication
+public class Application {
+  public static void main(String... args) {
+    SpringApplication.run(Application.class, args);
   }
 }
