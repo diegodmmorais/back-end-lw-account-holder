@@ -47,5 +47,9 @@ Nos basearemos em clean architecture.
 Nesse pequeno projeto, utilizaremos apenas Java na versão 17.
 Utilizando o framework spring-boot para conexão com o banco de e serviços rest-api
 
-#### Como executar a aplicação?
+### Como executar a aplicação?
 > mvn clean install && cd application && mvn spring-boot:run
+
+### Com chamar o serviço via postman ou via terminal?
+> curl --location --request GET 'http://localhost:8080/api/v1/customers/active-customer/789123749' \
+--header 'x-identifier-document: 999.999.999-99'
