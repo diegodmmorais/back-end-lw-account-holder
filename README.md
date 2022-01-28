@@ -24,7 +24,7 @@ titular.
 #### Haverá outros serviços?
 
 Sim, haverá um serviço que buscará um lista de titulares da conta. Esse caso é quando a conta corrente PF é uma conta
-conjunta ou conta com vários sócios. Outro serviço buscar as conta corrente PF do cliente.
+conjunta ou conta com vários sócios. Outro serviço buscará as contas corrente PF do cliente.
 
 #### Utilizares qual architecture?
 
