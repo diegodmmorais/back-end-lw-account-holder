@@ -1,4 +1,4 @@
-package com.lukeware.entities.account;
+package com.lukeware.entities.bankaccount;
 
 import com.lukeware.entities.accountholder.IAccountHolder;
 
@@ -8,7 +8,7 @@ import java.util.Set;
 /**
  * @author Diego Morais
  */
-public interface IAccount {
+public interface IBankAccount {
   boolean isActiveAccount();
 
   boolean isAccountHolder();

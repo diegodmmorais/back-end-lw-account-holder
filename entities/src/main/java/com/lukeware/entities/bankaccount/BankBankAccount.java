@@ -1,4 +1,4 @@
-package com.lukeware.entities.account;
+package com.lukeware.entities.bankaccount;
 
 import com.lukeware.entities.accountholder.IAccountHolder;
 
@@ -12,16 +12,16 @@ import java.util.logging.Logger;
 /**
  * @author Diego Morais
  */
-final record Account(boolean active,
-                     boolean externalMovement,
-                     TypeAccount type,
-                     LocalDate openDate,
-                     LocalDate lastMoveDate,
-                     Set<IAccountHolder> accountHolders) implements IAccount {
+final record BankBankAccount(boolean active,
+                             boolean externalMovement,
+                             TypeAccount type,
+                             LocalDate openDate,
+                             LocalDate lastMoveDate,
+                             Set<IAccountHolder> accountHolders) implements IBankAccount {
 
   public static final int DAYS_OPEN_ACCOUNT = 180;
   public static final int DAYS_MOVED = 90;
-  private static final Logger LOGGER = Logger.getLogger(Account.class.getName());
+  private static final Logger LOGGER = Logger.getLogger(BankBankAccount.class.getName());
 
   @Override
   public boolean isActiveAccount() {
@@ -31,7 +31,7 @@ final record Account(boolean active,
       this.isCheckingAccount();
       this.accountIsOpen();
       this.wasItMoved();
-    } catch (AccountValidateException e) {
+    } catch (BankAccountValidateException e) {
       LOGGER.log(Level.WARNING, "{0}", e.getMessage());
       return false;
     }
@@ -50,31 +50,31 @@ final record Account(boolean active,
 
   private void wasItMoved() {
     if (DAYS_MOVED < ChronoUnit.DAYS.between(lastMoveDate, LocalDate.now())) {
-      throw new AccountValidateException("Current account was opened in less than 180 days");
+      throw new BankAccountValidateException("Current bankaccount was opened in less than 180 days");
     }
   }
 
   private void accountIsOpen() {
     if (DAYS_OPEN_ACCOUNT > ChronoUnit.DAYS.between(openDate, LocalDate.now())) {
-      throw new AccountValidateException("Current account was opened in less than 180 days");
+      throw new BankAccountValidateException("Current bankaccount was opened in less than 180 days");
     }
   }
 
   private void isCheckingAccount() {
     if (TypeAccount.CHECKING_ACCOUNT_PF != this.type) {
-      throw new AccountValidateException("It's not a checking account.");
+      throw new BankAccountValidateException("It's not a checking bankaccount.");
     }
   }
 
   private void doNotHaveExternalMovement() {
     if (true == this.externalMovement) {
-      throw new AccountValidateException("In this account, there is External Movement.");
+      throw new BankAccountValidateException("In this bankaccount, there is External Movement.");
     }
   }
 
   private void isActive() {
     if (false == this.active) {
-      throw new AccountValidateException("Inactive account.");
+      throw new BankAccountValidateException("Inactive bankaccount.");
     }
   }
 }

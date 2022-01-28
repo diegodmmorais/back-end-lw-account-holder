@@ -1,4 +1,4 @@
-package com.lukeware.entities.account;
+package com.lukeware.entities.bankaccount;
 
 import com.lukeware.entities.accountholder.AccountHolderBuilder;
 import com.lukeware.entities.accountholder.IAccountHolder;
@@ -10,11 +10,11 @@ import java.time.LocalDate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-@DisplayName("Account Test")
-class AccountTest {
+@DisplayName("BankBankAccount Test")
+class BankAccountTest {
 
   @Test
-  @DisplayName("1 - This account is active")
+  @DisplayName("1 - This bankaccount is active")
   void thisAccountIsActive() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -24,14 +24,14 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isTrue();
@@ -44,7 +44,7 @@ class AccountTest {
 
 
   @Test
-  @DisplayName("2 - Is owner of the account?")
+  @DisplayName("2 - Is owner of the bankaccount?")
   void isOwnerOfTheAccount() {
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
                                                        .owner(true)
@@ -53,14 +53,14 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF.name())
-                                     .ownersAccount(Stream.of(accountHolder).collect(Collectors.toSet()))
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF.name())
+                                             .ownersAccount(Stream.of(accountHolder).collect(Collectors.toSet()))
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isTrue();
@@ -69,7 +69,7 @@ class AccountTest {
 
 
   @Test
-  @DisplayName("3 - Is not owner of the account?")
+  @DisplayName("3 - Is not owner of the bankaccount?")
   void isNotOwnerOfTheAccount() {
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
                                                        .owner(false)
@@ -78,14 +78,14 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isTrue();
@@ -94,7 +94,7 @@ class AccountTest {
 
 
   @Test
-  @DisplayName("4 - This account is not active")
+  @DisplayName("4 - This bankaccount is not active")
   void thisAccountIsNotActive() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -104,21 +104,21 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(false)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(false)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();
   }
 
   @Test
-  @DisplayName("5 - This account is not active with external movement ")
+  @DisplayName("5 - This bankaccount is not active with external movement ")
   void thisAccountIsNotActive2() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -128,21 +128,21 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(true)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(true)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();
   }
 
   @Test
-  @DisplayName("6 - This account is not active with saving account ")
+  @DisplayName("6 - This bankaccount is not active with saving bankaccount ")
   void thisAccountIsNotActive3() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -152,21 +152,21 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.SAVINGS_ACCOUNT)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.SAVINGS_ACCOUNT)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();
   }
 
   @Test
-  @DisplayName("7 - Owner not found of the account?")
+  @DisplayName("7 - Owner not found of the bankaccount?")
   void isNotOwnerOfTheAccountv2() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -176,13 +176,13 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isTrue();
@@ -190,7 +190,7 @@ class AccountTest {
   }
 
   @Test
-  @DisplayName("8 - This account is inactive")
+  @DisplayName("8 - This bankaccount is inactive")
   void thisAccountIsInactive() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -200,14 +200,14 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(100))
-                                     .openDate(LocalDate.now().minusDays(180))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(100))
+                                             .openDate(LocalDate.now().minusDays(180))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();
@@ -219,7 +219,7 @@ class AccountTest {
   }
 
   @Test
-  @DisplayName("9 - This account is inactive less open date")
+  @DisplayName("9 - This bankaccount is inactive less open date")
   void thisAccountIsInactiveLessOpenDate() {
 
     IAccountHolder accountHolder = AccountHolderBuilder.builder()
@@ -229,14 +229,14 @@ class AccountTest {
                                                        .identifierDocument("999.999.999-99")
                                                        .build();
 
-    IAccount account = AccountBuilder.builder()
-                                     .active(true)
-                                     .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
-                                     .ownerAccount(accountHolder)
-                                     .lastMoveDate(LocalDate.now().minusDays(90))
-                                     .openDate(LocalDate.now().minusDays(150))
-                                     .build();
+    IBankAccount account = BankAccountBuilder.builder()
+                                             .active(true)
+                                             .externalMovement(false)
+                                             .type(TypeAccount.CHECKING_ACCOUNT_PF)
+                                             .ownerAccount(accountHolder)
+                                             .lastMoveDate(LocalDate.now().minusDays(90))
+                                             .openDate(LocalDate.now().minusDays(150))
+                                             .build();
 
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();

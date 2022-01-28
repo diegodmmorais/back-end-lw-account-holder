@@ -24,7 +24,7 @@ class CustomerInteractorFactoryTest {
   ICustomerPresenter customerPresenter;
 
   @Test
-  @DisplayName("1 - create account holder gateway")
+  @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
     final var customerInputBoundary = CustomerInteractorFactory.builder()
                                                                .create(accountHolderGateway, bankAccountGateway, customerPresenter);

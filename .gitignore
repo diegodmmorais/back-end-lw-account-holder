@@ -28,6 +28,7 @@ hs_err_pid*
 /entities/target/
 /presenters/target/
 /usecases/target/
+/repositories/target/
 
 
 .DS_Store

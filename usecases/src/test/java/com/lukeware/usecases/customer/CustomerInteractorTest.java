@@ -35,7 +35,7 @@ class CustomerInteractorTest {
   ICustomerPresenter customerPresenter;
 
   @Test
-  @DisplayName("1 - Customer without bank account.")
+  @DisplayName("1 - Customer without bank bankaccount.")
   void customerWithoutBankAccount() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -57,7 +57,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("2 - Customer with a savings account.")
+  @DisplayName("2 - Customer with a savings bankaccount.")
   void customerWithSavingsAccount() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -88,7 +88,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("3 - Non-account holder customer.")
+  @DisplayName("3 - Non-bankaccount holder customer.")
   void nonAccountHolderCustomer() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -119,7 +119,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("4 - Customer with inactive checking account.")
+  @DisplayName("4 - Customer with inactive checking bankaccount.")
   void CustomerWithInactivecheckingAccount() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -150,7 +150,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("5 - Customer with a current account with external movement.")
+  @DisplayName("5 - Customer with a current bankaccount with external movement.")
   void customerWithCurrentAccountWithExternalMovement() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -181,7 +181,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("6 - customer with current account with date of last transaction greater than 180 days")
+  @DisplayName("6 - customer with current bankaccount with date of last transaction greater than 180 days")
   void customerWithCurrentAccountWithOpeningDateLessThan180Days() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -213,7 +213,7 @@ class CustomerInteractorTest {
 
 
   @Test
-  @DisplayName("7 - Customer with current account with date of last transaction greater than 90 days.")
+  @DisplayName("7 - Customer with current bankaccount with date of last transaction greater than 90 days.")
   void customerWithCurrentAccountWithDateOfLastTransactionGreaterThan90Days() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
@@ -244,7 +244,7 @@ class CustomerInteractorTest {
   }
 
   @Test
-  @DisplayName("8 - Customer with banck account ativa.")
+  @DisplayName("8 - Customer with banck bankaccount ativa.")
   void CustomerWithBanckAccountAtiva() {
     /* preparation */
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");

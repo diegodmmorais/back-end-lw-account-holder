@@ -17,7 +17,7 @@ class BankAccountGatewayFactoryTest {
   IBankAccountRegisterDsGateway bankAccountRepository;
 
   @Test
-  @DisplayName("1 - create account holder gateway")
+  @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
     final var bankAccountGateway = BankAccountGatewayFactory.builder().create(bankAccountRepository);
     Assertions.assertThat(bankAccountGateway).isNotNull();

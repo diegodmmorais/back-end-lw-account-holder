@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 class AccountHolderGatewayFactoryTest {
 
   @Test
-  @DisplayName("1 - create account holder gateway")
+  @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
     final var accountHolderGateway = AccountHolderGatewayFactory.builder().create();
     Assertions.assertThat(accountHolderGateway).isNotNull();

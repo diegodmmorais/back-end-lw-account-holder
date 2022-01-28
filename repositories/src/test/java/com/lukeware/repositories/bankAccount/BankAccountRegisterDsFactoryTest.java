@@ -11,14 +11,14 @@ import org.mockito.junit.jupiter.MockitoExtension;
  * @author Diego Morais
  */
 @ExtendWith(MockitoExtension.class)
-@DisplayName("Bank account register factory test")
+@DisplayName("Bank bankaccount register factory test")
 class BankAccountRegisterDsFactoryTest {
 
   @Mock
   BankAccountRepository bankAccountRepository;
 
   @Test
-  @DisplayName("1 - create builder bank account register")
+  @DisplayName("1 - create builder bank bankaccount register")
   void createBuilderBankAccountRegister() {
     final var bankAccountRegisterDsGateway = BankAccountRegisterDsFactory.builder().create(bankAccountRepository);
 

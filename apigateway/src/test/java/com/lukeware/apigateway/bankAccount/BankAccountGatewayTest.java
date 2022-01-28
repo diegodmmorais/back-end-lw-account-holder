@@ -17,7 +17,7 @@ import java.util.stream.Stream;
  * @author Diego Morais
  */
 @ExtendWith(MockitoExtension.class)
-@DisplayName("bank account gateway Test")
+@DisplayName("bank bankaccount gateway Test")
 class BankAccountGatewayTest {
 
   @InjectMocks
@@ -27,7 +27,7 @@ class BankAccountGatewayTest {
 
 
   @Test
-  @DisplayName("1 - Find all account holders")
+  @DisplayName("1 - Find all bankaccount holders")
   void FindAllBankAccounts() {
     /* preparation */
     final var accountDsResponse = new BankAccountDsResponse("789123456",

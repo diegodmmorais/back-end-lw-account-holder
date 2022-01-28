@@ -1,4 +1,4 @@
-package com.lukeware.entities.account;
+package com.lukeware.entities.bankaccount;
 
 enum TypeAccount {
   CHECKING_ACCOUNT_PJ,

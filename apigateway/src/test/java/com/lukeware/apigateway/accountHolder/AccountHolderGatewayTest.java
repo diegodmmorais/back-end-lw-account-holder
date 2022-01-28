@@ -20,7 +20,7 @@ class AccountHolderGatewayTest {
 
 
   @Test
-  @DisplayName("1 - Find all account holders")
+  @DisplayName("1 - Find all bankaccount holders")
   void FindAllAccountHolders(){
     final var accountHolders = accountHolderGateway.findAll("789123465");
 

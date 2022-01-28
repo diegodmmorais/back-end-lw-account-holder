@@ -1,7 +1,7 @@
 package com.lukeware.usecases.customer;
 
-import com.lukeware.entities.account.AccountBuilder;
-import com.lukeware.entities.account.IAccount;
+import com.lukeware.entities.bankaccount.BankAccountBuilder;
+import com.lukeware.entities.bankaccount.IBankAccount;
 import com.lukeware.entities.accountholder.AccountHolderBuilder;
 import com.lukeware.entities.accountholder.IAccountHolder;
 import com.lukeware.usecases.accountholder.AccountHolderResponse;
@@ -43,11 +43,11 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
     return createCustomerResponse(customerRequest, TypeCustomer.AC);
   }
 
-  private Set<IAccount> getAccountWithAccountHolder(Set<IAccount> accounts) {
+  private Set<IBankAccount> getAccountWithAccountHolder(Set<IBankAccount> accounts) {
     return getAccountsWithRule(accounts, account -> account.isAccountHolder());
   }
 
-  private Set<IAccount> getAccountActive(Set<IAccount> accounts) {
+  private Set<IBankAccount> getAccountActive(Set<IBankAccount> accounts) {
     return getAccountsWithRule(accounts, account -> account.isActiveAccount());
   }
 
@@ -55,13 +55,13 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
     return customerPresenter.successView(new CustomerResponse(customerRequest.identifierCode(), customerRequest.identifierDocument(), type));
   }
 
-  private Set<IAccount> getAccountsWithRule(Set<IAccount> accounts, Predicate<IAccount> filter) {
+  private Set<IBankAccount> getAccountsWithRule(Set<IBankAccount> accounts, Predicate<IBankAccount> filter) {
     return accounts.stream()
                    .filter(filter)
                    .collect(Collectors.toSet());
   }
 
-  private IAccount getAccount(CustomerRequest customerRequest, BankAccountResponse bankAccount) {
+  private IBankAccount getAccount(CustomerRequest customerRequest, BankAccountResponse bankAccount) {
     final var accountHolders = findAllAccountHolders(bankAccount);
     final var accountHolder = toaccountHolder(customerRequest, accountHolders);
     return toAccount(bankAccount, accountHolder);
@@ -92,15 +92,15 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
                                .build();
   }
 
-  private IAccount toAccount(BankAccountResponse bankAccount, Set<IAccountHolder> accountHolder) {
-    return AccountBuilder.builder()
-                         .active(bankAccount.active())
-                         .externalMovement(bankAccount.externalMovement())
-                         .lastMoveDate(bankAccount.lastMoveDate())
-                         .openDate(bankAccount.openDate())
-                         .type(bankAccount.type())
-                         .ownersAccount(accountHolder)
-                         .build();
+  private IBankAccount toAccount(BankAccountResponse bankAccount, Set<IAccountHolder> accountHolder) {
+    return BankAccountBuilder.builder()
+                             .active(bankAccount.active())
+                             .externalMovement(bankAccount.externalMovement())
+                             .lastMoveDate(bankAccount.lastMoveDate())
+                             .openDate(bankAccount.openDate())
+                             .type(bankAccount.type())
+                             .ownersAccount(accountHolder)
+                             .build();
   }
 
 
