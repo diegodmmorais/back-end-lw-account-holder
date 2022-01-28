@@ -36,7 +36,7 @@ class CustomerControllerTest {
   void teste() throws Exception {
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-999", TypeCustomer.AC);
 
-    Mockito.when(this.customerInputBoundary.validateActiveCustomer(Mockito.any()))
+    Mockito.when(this.customerInputBoundary.validateActiveCustomerPf(Mockito.any()))
            .thenReturn(customerResponse);
 
     final var requestBuilder = MockMvcRequestBuilders.get("/customers/active-customer/{code}", "789123456")

@@ -20,13 +20,13 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
                                 IBankAccountGateway bankAccountGateway,
                                 ICustomerPresenter customerPresenter) implements ICustomerInputBoundary {
 
-  private static final String CHECKING_ACCOUNT = "CHECKING_ACCOUNT";
+  private static final String CHECKING_ACCOUNT_PF = "CHECKING_ACCOUNT_PF";
 
   @Override
-  public CustomerResponse validateActiveCustomer(CustomerRequest customerRequest) {
+  public CustomerResponse validateActiveCustomerPf(CustomerRequest customerRequest) {
     final var bankAccounts = findAllBankAccount(customerRequest);
     final var accounts = bankAccounts.stream()
-                                     .filter(account -> CHECKING_ACCOUNT.equals(account.type()))
+                                     .filter(account -> CHECKING_ACCOUNT_PF.equals(account.type()))
                                      .map(bankAccount -> getAccount(customerRequest, bankAccount))
                                      .collect(Collectors.toSet());
 

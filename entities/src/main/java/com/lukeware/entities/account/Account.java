@@ -61,7 +61,7 @@ final record Account(boolean active,
   }
 
   private void isCheckingAccount() {
-    if (TypeAccount.CHECKING_ACCOUNT != this.type) {
+    if (TypeAccount.CHECKING_ACCOUNT_PF != this.type) {
       throw new AccountValidateException("It's not a checking account.");
     }
   }

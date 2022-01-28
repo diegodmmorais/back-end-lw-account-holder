@@ -45,7 +45,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -78,7 +78,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -96,7 +96,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             true,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(180),
                                                             LocalDate.now().minusDays(90)
     );
@@ -109,7 +109,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -127,7 +127,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             false,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(180),
                                                             LocalDate.now().minusDays(90)
     );
@@ -140,7 +140,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -158,7 +158,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             true,
                                                             true,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(180),
                                                             LocalDate.now().minusDays(90)
     );
@@ -171,7 +171,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -189,7 +189,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             true,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(170),
                                                             LocalDate.now().minusDays(90)
     );
@@ -202,7 +202,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -221,7 +221,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             true,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(180),
                                                             LocalDate.now().minusDays(100)
     );
@@ -234,7 +234,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();
@@ -252,7 +252,7 @@ class CustomerInteractorTest {
     final var bankAccountResponse = new BankAccountResponse("789123456",
                                                             true,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(180),
                                                             LocalDate.now().minusDays(80)
     );
@@ -265,7 +265,7 @@ class CustomerInteractorTest {
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
 
     /* execution */
-    final var response = customerInteractor.validateActiveCustomer(customerRequest);
+    final var response = customerInteractor.validateActiveCustomerPf(customerRequest);
 
     /* validation */
     Assertions.assertThat(response).isNotNull();

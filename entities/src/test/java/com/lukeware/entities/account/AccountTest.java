@@ -27,7 +27,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -36,7 +36,7 @@ class AccountTest {
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isTrue();
     Assertions.assertThat(account.accountHolders()).isNotNull().isNotEmpty().hasSize(1);
-    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT);
+    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT_PF);
     Assertions.assertThat(account.lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
     Assertions.assertThat(account.openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
     Assertions.assertThat(account.isExternalMovement()).isNotNull().isFalse();
@@ -56,7 +56,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT.name())
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF.name())
                                      .ownersAccount(Stream.of(accountHolder).collect(Collectors.toSet()))
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -81,7 +81,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -107,7 +107,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(false)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -131,7 +131,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(true)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -179,7 +179,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(180))
                                      .build();
@@ -203,7 +203,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(100))
                                      .openDate(LocalDate.now().minusDays(180))
@@ -212,7 +212,7 @@ class AccountTest {
     Assertions.assertThat(account).isNotNull();
     Assertions.assertThat(account.isActiveAccount()).isFalse();
     Assertions.assertThat(account.accountHolders()).isNotNull().isNotEmpty().hasSize(1);
-    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT);
+    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT_PF);
     Assertions.assertThat(account.lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(100));
     Assertions.assertThat(account.openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
     Assertions.assertThat(account.isExternalMovement()).isNotNull().isFalse();
@@ -232,7 +232,7 @@ class AccountTest {
     IAccount account = AccountBuilder.builder()
                                      .active(true)
                                      .externalMovement(false)
-                                     .type(TypeAccount.CHECKING_ACCOUNT)
+                                     .type(TypeAccount.CHECKING_ACCOUNT_PF)
                                      .ownerAccount(accountHolder)
                                      .lastMoveDate(LocalDate.now().minusDays(90))
                                      .openDate(LocalDate.now().minusDays(150))
@@ -253,7 +253,7 @@ class AccountTest {
     Assertions.assertThat(account.accountHolders().stream().findFirst().get().sequence())
               .isNotNull()
               .isEqualTo(1);
-    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT);
+    Assertions.assertThat(account.type()).isNotNull().isEqualTo(TypeAccount.CHECKING_ACCOUNT_PF);
     Assertions.assertThat(account.lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
     Assertions.assertThat(account.openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(150));
     Assertions.assertThat(account.isExternalMovement()).isNotNull().isFalse();

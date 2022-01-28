@@ -33,7 +33,7 @@ class BankAccountGatewayTest {
     final var accountDsResponse = new BankAccountDsResponse("789123456",
                                                             true,
                                                             false,
-                                                            "CHECKING_ACCOUNT",
+                                                            "CHECKING_ACCOUNT_PF",
                                                             LocalDate.now().minusDays(190),
                                                             LocalDate.now().minusDays(80));
     final var bankAccounts = Stream.of(accountDsResponse).collect(Collectors.toSet());
@@ -50,7 +50,7 @@ class BankAccountGatewayTest {
     Assertions.assertThat(bankAccountResponse.get().identifierCode()).isNotBlank().isNotBlank();
     Assertions.assertThat(bankAccountResponse.get().active()).isTrue();
     Assertions.assertThat(bankAccountResponse.get().externalMovement()).isFalse();
-    Assertions.assertThat(bankAccountResponse.get().type()).isEqualTo("CHECKING_ACCOUNT");
+    Assertions.assertThat(bankAccountResponse.get().type()).isEqualTo("CHECKING_ACCOUNT_PF");
     Assertions.assertThat(bankAccountResponse.get().lastMoveDate()).isEqualTo(LocalDate.now().minusDays(80));
     Assertions.assertThat(bankAccountResponse.get().openDate()).isEqualTo(LocalDate.now().minusDays(190));
   }

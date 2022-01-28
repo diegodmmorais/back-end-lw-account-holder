@@ -17,7 +17,7 @@ final record CustomerController(ICustomerInputBoundary customerInputBoundary) im
   public CustomerResponse isActiveCustomer(
       @PathVariable("code") String identifierCode,
       @RequestHeader("x-identifier-document") String identifierDocument) {
-    return this.customerInputBoundary.validateActiveCustomer(new CustomerRequest(identifierCode, identifierDocument));
+    return this.customerInputBoundary.validateActiveCustomerPf(new CustomerRequest(identifierCode, identifierDocument));
   }
 
 }

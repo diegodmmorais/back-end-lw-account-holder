@@ -41,7 +41,7 @@ class BankAccountRegisterDsGatewayTest {
     final var accountDsRequest = new BankAccountDsRequest("789123456",
                                                           true,
                                                           false,
-                                                          "CHECKING_ACCOUNT",
+                                                          "CHECKING_ACCOUNT_PF",
                                                           LocalDate.now().minusDays(90),
                                                           LocalDate.now().minusDays(180));
 
@@ -52,7 +52,7 @@ class BankAccountRegisterDsGatewayTest {
     Assertions.assertThat(accountDsResponse.get().identifierCode()).isNotNull().isEqualTo("789123456");
     Assertions.assertThat(accountDsResponse.get().active()).isNotNull().isTrue();
     Assertions.assertThat(accountDsResponse.get().externalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT");
+    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
     Assertions.assertThat(accountDsResponse.get().openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
     Assertions.assertThat(accountDsResponse.get().lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
   }
@@ -63,7 +63,7 @@ class BankAccountRegisterDsGatewayTest {
     final var accountDsRequest = new BankAccountDsRequest("789123456",
                                                           true,
                                                           false,
-                                                          "CHECKING_ACCOUNT",
+                                                          "CHECKING_ACCOUNT_PF",
                                                           LocalDate.now().minusDays(90),
                                                           LocalDate.now().minusDays(180));
 
@@ -77,7 +77,7 @@ class BankAccountRegisterDsGatewayTest {
     Assertions.assertThat(accountDsResponse.get().identifierCode()).isNotNull().isEqualTo("789123456");
     Assertions.assertThat(accountDsResponse.get().active()).isNotNull().isTrue();
     Assertions.assertThat(accountDsResponse.get().externalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT");
+    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
     Assertions.assertThat(accountDsResponse.get().openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
     Assertions.assertThat(accountDsResponse.get().lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
   }
