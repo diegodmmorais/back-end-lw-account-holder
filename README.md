@@ -46,3 +46,6 @@ Nos basearemos em clean architecture.
 
 Nesse pequeno projeto, utilizaremos apenas Java na versão 17.
 Utilizando o framework spring-boot para conexão com o banco de e serviços rest-api
+
+#### Como executar a aplicação?
+> mvn clean install && cd application && mvn spring-boot:run
