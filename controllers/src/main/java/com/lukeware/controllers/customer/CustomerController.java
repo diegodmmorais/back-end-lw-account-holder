@@ -1,4 +1,4 @@
-package com.lukeware.controllers;
+package com.lukeware.controllers.customer;
 
 import com.lukeware.usecases.customer.CustomerRequest;
 import com.lukeware.usecases.customer.CustomerResponse;

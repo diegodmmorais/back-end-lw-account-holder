@@ -1,5 +1,6 @@
-package com.lukeware.controllers;
+package com.lukeware.controllers.customer;
 
+import com.lukeware.controllers.customer.CustomerControllerFactory;
 import com.lukeware.usecases.customer.ICustomerInputBoundary;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;

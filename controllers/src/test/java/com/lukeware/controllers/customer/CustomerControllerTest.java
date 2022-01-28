@@ -1,5 +1,6 @@
-package com.lukeware.controllers;
+package com.lukeware.controllers.customer;
 
+import com.lukeware.controllers.customer.CustomerController;
 import com.lukeware.usecases.customer.CustomerResponse;
 import com.lukeware.usecases.customer.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.TypeCustomer;
