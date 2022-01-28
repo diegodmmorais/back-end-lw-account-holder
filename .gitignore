@@ -36,3 +36,4 @@ hs_err_pid*
 /repositories/target/
 /frameworks-drivers/application-spring/target/
 /frameworks-drivers/repositories-spring/target/
+/frameworks-drivers/data/
