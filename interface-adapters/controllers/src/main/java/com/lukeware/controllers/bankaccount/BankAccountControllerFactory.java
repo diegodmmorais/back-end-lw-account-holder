@@ -1,6 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.apigateway.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 
 import java.util.Objects;
 

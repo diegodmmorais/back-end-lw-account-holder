@@ -4,19 +4,16 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.lukeware.pf</groupId>
-  <artifactId>lab-clear-architecture-pf</artifactId>
+  <groupId>com.lukeware.accountholder</groupId>
+  <artifactId>clean-architecture-account-holder</artifactId>
   <packaging>pom</packaging>
   <version>0.1.0-SNAPSHOT</version>
 
   <modules>
+    <module>interface-adapters</module>
+    <module>frameworks-drivers</module>
     <module>entities</module>
-    <module>usecases</module>
-    <module>controllers</module>
-    <module>presenters</module>
-    <module>apigateway</module>
-    <module>application</module>
-    <module>repositories</module>
+    <module>use-cases</module>
   </modules>
 
   <properties>

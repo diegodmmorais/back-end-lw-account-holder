@@ -1,7 +1,7 @@
-package com.lukeware.repositories.bankAccount;
+package com.lukeware.repositoriesspring.bankAccount;
 
-import com.lukeware.apigateway.bankAccount.BankAccountDsRequest;
-import com.lukeware.apigateway.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.gateways.bankAccount.BankAccountDsRequest;
+import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,11 +23,10 @@ import java.time.LocalDate;
 class BankAccountRegisterDsGatewayTest {
 
   @Autowired
-  private TestEntityManager entityManager;
-
-  @Autowired
   BankAccountRepository bankAccountRepository;
-
+  @Autowired
+  private TestEntityManager entityManager;
+  
   IBankAccountRegisterDsGateway bankAccountRegisterDsGateway;
 
   @BeforeEach

@@ -1,6 +1,5 @@
-package com.lukeware.apigateway.accountHolder;
+package com.lukeware.gateways.accountHolder;
 
-import com.lukeware.gateways.accountHolder.AccountHolderGatewayFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

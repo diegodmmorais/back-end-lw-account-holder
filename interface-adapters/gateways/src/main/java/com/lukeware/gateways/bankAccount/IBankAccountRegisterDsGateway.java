@@ -1,4 +1,4 @@
-package com.lukeware.apigateway.bankAccount;
+package com.lukeware.gateways.bankAccount;
 
 import java.util.Optional;
 import java.util.Set;

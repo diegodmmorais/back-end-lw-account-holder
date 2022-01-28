@@ -1,7 +1,5 @@
-package com.lukeware.presenters;
+package com.lukeware.presenters.customer;
 
-import com.lukeware.presenters.customer.CustomerPresenter;
-import com.lukeware.presenters.customer.CustomerPresenterException;
 import com.lukeware.usecases.customer.CustomerResponse;
 import com.lukeware.usecases.customer.TypeCustomer;
 import org.assertj.core.api.Assertions;

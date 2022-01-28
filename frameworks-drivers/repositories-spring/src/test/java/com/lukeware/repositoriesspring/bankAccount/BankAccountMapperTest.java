@@ -1,4 +1,4 @@
-package com.lukeware.repositories.bankAccount;
+package com.lukeware.repositoriesspring.bankAccount;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;

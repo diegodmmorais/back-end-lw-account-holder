@@ -1,0 +1,7 @@
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/accountHolder/AccountHolderGateway.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/bankAccount/BankAccountDsResponse.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/bankAccount/BankAccountDsRequest.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/bankAccount/BankAccountGatewayFactory.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/bankAccount/IBankAccountRegisterDsGateway.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/accountHolder/AccountHolderGatewayFactory.java
+/Users/diegomorais/workspace/poc/lab/back-end-lw-account-holder/interface-adapters/gateways/src/main/java/com/lukeware/gateways/bankAccount/BankAccountGateway.java

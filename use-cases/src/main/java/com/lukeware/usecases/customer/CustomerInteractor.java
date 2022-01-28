@@ -1,9 +1,9 @@
 package com.lukeware.usecases.customer;
 
-import com.lukeware.entities.bankaccount.BankAccountBuilder;
-import com.lukeware.entities.bankaccount.IBankAccount;
 import com.lukeware.entities.accountholder.AccountHolderBuilder;
 import com.lukeware.entities.accountholder.IAccountHolder;
+import com.lukeware.entities.bankaccount.BankAccountBuilder;
+import com.lukeware.entities.bankaccount.IBankAccount;
 import com.lukeware.usecases.accountholder.AccountHolderResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
 import com.lukeware.usecases.banckaccount.BankAccountResponse;

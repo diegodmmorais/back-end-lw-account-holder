@@ -1,4 +1,6 @@
-package com.lukeware.repositories.bankAccount;
+package com.lukeware.repositoriesspring.bankAccount;
+
+import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 
 import java.util.Objects;
 
@@ -20,7 +22,7 @@ public final class BankAccountRegisterDsFactory {
     return bankAccountRegisterDsFactory;
   }
 
-  public BankAccountRegisterDsGateway create(BankAccountRepository bankAccountRepository) {
+  public IBankAccountRegisterDsGateway create(BankAccountRepository bankAccountRepository) {
     return new BankAccountRegisterDsGateway(bankAccountRepository);
   }
 

@@ -1,4 +1,4 @@
-package com.lukeware.presenters;
+package com.lukeware.presenters.customer;
 
 /**
  * @author Diego Morais

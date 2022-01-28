@@ -1,4 +1,4 @@
-package com.lukeware.apigateway.accountHolder;
+package com.lukeware.gateways.accountHolder;
 
 import com.lukeware.usecases.accountholder.AccountHolderResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
@@ -9,6 +9,7 @@ import java.util.stream.Stream;
 
 /**
  * simulation service api external
+ *
  * @author Diego Morais
  */
 final record AccountHolderGateway() implements IAccountHolderGateway {
@@ -22,6 +23,6 @@ final record AccountHolderGateway() implements IAccountHolderGateway {
 
   @Override
   public Set<AccountHolderResponse> findAll(String identifierCode) {
-    return accountHolders.stream().filter(it-> it.identifierCode().equals(identifierCode)).collect(Collectors.toSet());
+    return accountHolders.stream().filter(it -> it.identifierCode().equals(identifierCode)).collect(Collectors.toSet());
   }
 }

@@ -1,13 +1,8 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.apigateway.bankAccount.BankAccountDsRequest;
-import com.lukeware.apigateway.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.gateways.bankAccount.BankAccountDsRequest;
+import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 import com.lukeware.usecases.banckaccount.BankAccountResponse;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 
 import java.util.Optional;
 import java.util.Set;
@@ -20,11 +15,7 @@ final record BankAccountController(
     IBankAccountRegisterDsGateway bankAccountRegisterDsGateway) implements IBankAccountController {
 
   @Override
-  @PostMapping
-  public Optional<BankAccountResponse> save(
-      @RequestBody BankAccountResquest resquest,
-      @RequestHeader("x-identifier-document") String identifierDocument
-  ) {
+  public Optional<BankAccountResponse> save(BankAccountResquest resquest, String identifierDocument) {
     return this.bankAccountRegisterDsGateway.save(new BankAccountDsRequest(resquest.identifierCode(),
                                                                            identifierDocument,
                                                                            resquest.active(),
@@ -42,8 +33,7 @@ final record BankAccountController(
   }
 
   @Override
-  @GetMapping("{code}")
-  public Set<BankAccountResponse> findAll(@PathVariable("code") String identifierCode) {
+  public Set<BankAccountResponse> findAll(String identifierCode) {
     return this.bankAccountRegisterDsGateway.findAll(identifierCode).stream()
                                             .map(ds -> new BankAccountResponse(ds.identifierCode(),
                                                                                ds.customerId(),

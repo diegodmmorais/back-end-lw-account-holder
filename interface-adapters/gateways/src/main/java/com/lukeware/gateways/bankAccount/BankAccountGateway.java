@@ -1,4 +1,4 @@
-package com.lukeware.apigateway.bankAccount;
+package com.lukeware.gateways.bankAccount;
 
 import com.lukeware.usecases.banckaccount.BankAccountResponse;
 import com.lukeware.usecases.banckaccount.IBankAccountGateway;
@@ -16,13 +16,13 @@ final record BankAccountGateway(IBankAccountRegisterDsGateway accountRegisterDsG
     return this.accountRegisterDsGateway.findAll(identifierCode)
                                         .stream()
                                         .map(banckAccount ->
-                                              new BankAccountResponse(banckAccount.identifierCode(),
-                                                                      banckAccount.customerId(),
-                                                                      banckAccount.active(),
-                                                                      banckAccount.externalMovement(),
-                                                                      banckAccount.type(),
-                                                                      banckAccount.openDate(),
-                                                                      banckAccount.lastMoveDate())
-                                     ).collect(Collectors.toSet());
+                                                 new BankAccountResponse(banckAccount.identifierCode(),
+                                                                         banckAccount.customerId(),
+                                                                         banckAccount.active(),
+                                                                         banckAccount.externalMovement(),
+                                                                         banckAccount.type(),
+                                                                         banckAccount.openDate(),
+                                                                         banckAccount.lastMoveDate())
+                                        ).collect(Collectors.toSet());
   }
 }

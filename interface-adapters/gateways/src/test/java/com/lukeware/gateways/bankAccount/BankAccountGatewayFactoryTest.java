@@ -1,7 +1,5 @@
-package com.lukeware.apigateway.bankAccount;
+package com.lukeware.gateways.bankAccount;
 
-import com.lukeware.gateways.bankAccount.BankAccountGatewayFactory;
-import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

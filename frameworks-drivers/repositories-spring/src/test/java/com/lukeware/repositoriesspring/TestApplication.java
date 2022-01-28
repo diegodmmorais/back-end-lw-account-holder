@@ -1,4 +1,4 @@
-package com.lukeware.repositories;
+package com.lukeware.repositoriesspring;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

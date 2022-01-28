@@ -1,4 +1,4 @@
-package com.lukeware.repositories.bankAccount;
+package com.lukeware.repositoriesspring.bankAccount;
 
 import java.time.LocalDate;
 

@@ -1,4 +1,4 @@
-package com.lukeware.presenters;
+package com.lukeware.presenters.customer;
 
 import com.lukeware.usecases.customer.ICustomerPresenter;
 
@@ -21,6 +21,7 @@ public class CustomerPresenterFactory {
     }
     return CustomerPresenterFactory;
   }
+
   public ICustomerPresenter create() {
     return new CustomerPresenter();
   }

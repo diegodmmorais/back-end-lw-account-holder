@@ -1,6 +1,5 @@
-package com.lukeware.presenters;
+package com.lukeware.presenters.customer;
 
-import com.lukeware.presenters.customer.CustomerPresenterFactory;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

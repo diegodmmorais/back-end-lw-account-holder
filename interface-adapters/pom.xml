@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <parent>
-    <artifactId>lab-clear-architecture-pf</artifactId>
-    <groupId>com.lukeware.pf</groupId>
+    <artifactId>clean-architecture-account-holder</artifactId>
+    <groupId>com.lukeware.accountholder</groupId>
     <version>0.1.0-SNAPSHOT</version>
   </parent>
 
@@ -13,5 +13,11 @@
   <groupId>com.lukeware.interfaceadapters</groupId>
   <artifactId>interface-adapters</artifactId>
   <packaging>pom</packaging>
+
+  <modules>
+    <module>controllers</module>
+    <module>gateways</module>
+    <module>presenters</module>
+  </modules>
 
 </project>

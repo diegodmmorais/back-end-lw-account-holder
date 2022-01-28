@@ -1,55 +1,45 @@
 package com.lukeware.controllers.customer;
 
-import com.lukeware.controllers.customer.CustomerController;
 import com.lukeware.usecases.customer.CustomerResponse;
 import com.lukeware.usecases.customer.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.TypeCustomer;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 /**
  * @author Diego Morais
  */
-@WebMvcTest
-@AutoConfigureMockMvc
+@ExtendWith(MockitoExtension.class)
 @DisplayName("Customer controller test")
-@ContextConfiguration(classes = {CustomerController.class})
 class CustomerControllerTest {
 
-  @MockBean
-  ICustomerInputBoundary customerInputBoundary;
+  @InjectMocks
+  CustomerController customerController;
 
-  @Autowired
-  private MockMvc mockMvc;
+  @Mock
+  ICustomerInputBoundary customerInputBoundary;
 
   @Test
   @DisplayName("Validate active customer")
-  void teste() throws Exception {
+  void validateActiveCustomer() {
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-999", TypeCustomer.AC);
+    customerResponse.setMessage("Customer is Active");
 
     Mockito.when(this.customerInputBoundary.validateActiveCustomerPf(Mockito.any()))
            .thenReturn(customerResponse);
 
-    final var requestBuilder = MockMvcRequestBuilders.get("/customers/active-customer/{code}", "789123456")
-                                                     .header("x-identifier-document", "999.999.999-99");
-    this.mockMvc
-        .perform(requestBuilder)
-        .andDo(MockMvcResultHandlers.print())
-        .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
-        .andExpect(MockMvcResultMatchers.status().isOk())
-        .andExpect(MockMvcResultMatchers.jsonPath("$.identifierCode").value("789123456"))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.identifierDocument").value("999.999.999-999"))
-        .andExpect(MockMvcResultMatchers.jsonPath("$.type").value("AC"));
+    final var response = customerController.isActiveCustomer("789123456", "999.999.999-999");
+
+    Assertions.assertThat(response).isNotNull();
+    Assertions.assertThat(response.getIdentifierCode()).isNotNull().isEqualTo("789123456");
+    Assertions.assertThat(response.getMessage()).isNotNull().isEqualTo("Customer is Active");
+    Assertions.assertThat(response.getIdentifierDocument()).isNotNull().isEqualTo("999.999.999-999");
 
   }
 

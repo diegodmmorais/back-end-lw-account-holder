@@ -1,4 +1,4 @@
-package com.lukeware.apigateway.accountHolder;
+package com.lukeware.gateways.accountHolder;
 
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
 

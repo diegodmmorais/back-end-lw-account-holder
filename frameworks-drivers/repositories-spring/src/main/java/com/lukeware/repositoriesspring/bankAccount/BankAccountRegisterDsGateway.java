@@ -1,8 +1,8 @@
-package com.lukeware.repositories.bankAccount;
+package com.lukeware.repositoriesspring.bankAccount;
 
-import com.lukeware.apigateway.bankAccount.BankAccountDsRequest;
-import com.lukeware.apigateway.bankAccount.BankAccountDsResponse;
-import com.lukeware.apigateway.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.gateways.bankAccount.BankAccountDsRequest;
+import com.lukeware.gateways.bankAccount.BankAccountDsResponse;
+import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 
 import java.util.Optional;
 import java.util.Set;
