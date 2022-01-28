@@ -28,52 +28,51 @@ public final class AccountBuilder {
   }
 
   public AccountBuilder active(boolean active) {
-    AccountBuilder.accountBuilder.active = active;
-    return AccountBuilder.accountBuilder;
+    this.active = active;
+    return this;
   }
 
   public AccountBuilder externalMovement(boolean externalMovement) {
-    AccountBuilder.accountBuilder.externalMovement = externalMovement;
-    return AccountBuilder.accountBuilder;
+    this.externalMovement = externalMovement;
+    return this;
   }
 
   public AccountBuilder type(TypeAccount type) {
-    AccountBuilder.accountBuilder.type = type;
-    return AccountBuilder.accountBuilder;
+    this.type = type;
+    return this;
   }
 
   public AccountBuilder type(String type) {
-    AccountBuilder.accountBuilder.type = TypeAccount.valueOf(type);
-    return AccountBuilder.accountBuilder;
+    this.type = TypeAccount.valueOf(type);
+    return this;
   }
 
   public AccountBuilder openDate(LocalDate openDate) {
-    AccountBuilder.accountBuilder.openDate = openDate;
-    return AccountBuilder.accountBuilder;
+    this.openDate = openDate;
+    return this;
   }
 
   public AccountBuilder lastMoveDate(LocalDate lastMoveDate) {
-    AccountBuilder.accountBuilder.lastMoveDate = lastMoveDate;
-    return AccountBuilder.accountBuilder;
+    this.lastMoveDate = lastMoveDate;
+    return this;
   }
 
   public AccountBuilder ownerAccount(IAccountHolder ownerAccount) {
-    AccountBuilder.accountBuilder.ownersAccount.add(ownerAccount);
-    return AccountBuilder.accountBuilder;
+    this.ownersAccount.add(ownerAccount);
+    return this;
   }
 
   public AccountBuilder ownersAccount(Set<IAccountHolder> ownerAccount) {
-    AccountBuilder.accountBuilder.ownersAccount.addAll(ownerAccount);
-    return AccountBuilder.accountBuilder;
+    this.ownersAccount.addAll(ownerAccount);
+    return this;
   }
 
   public IAccount build() {
-    return new Account(AccountBuilder.accountBuilder.active,
-                       AccountBuilder.accountBuilder.externalMovement,
-                       AccountBuilder.accountBuilder.type,
-                       AccountBuilder.accountBuilder.openDate,
-                       AccountBuilder.accountBuilder.lastMoveDate,
-                       AccountBuilder.accountBuilder.ownersAccount
-    );
+    return new Account(this.active,
+                       this.externalMovement,
+                       this.type,
+                       this.openDate,
+                       this.lastMoveDate,
+                       this.ownersAccount);
   }
 }

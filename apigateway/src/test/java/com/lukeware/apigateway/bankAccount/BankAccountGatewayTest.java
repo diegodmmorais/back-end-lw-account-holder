@@ -31,6 +31,7 @@ class BankAccountGatewayTest {
   void FindAllBankAccounts() {
     /* preparation */
     final var accountDsResponse = new BankAccountDsResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",

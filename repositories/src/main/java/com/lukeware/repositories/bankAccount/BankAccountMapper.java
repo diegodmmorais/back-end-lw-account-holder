@@ -21,6 +21,7 @@ final class BankAccountMapper {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String identifierCode;
+  private String customerId;
   private boolean active;
   private boolean externalMovement;
   private String type;
@@ -81,6 +82,14 @@ final class BankAccountMapper {
 
   public void setLastMoveDate(LocalDate lastMoveDate) {
     this.lastMoveDate = lastMoveDate;
+  }
+
+  public String getCustomerId() {
+    return customerId;
+  }
+
+  public void setCustomerId(String customerId) {
+    this.customerId = customerId;
   }
 
   @Override

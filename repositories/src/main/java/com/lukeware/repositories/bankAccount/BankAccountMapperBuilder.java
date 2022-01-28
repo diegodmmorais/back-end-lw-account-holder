@@ -2,10 +2,14 @@ package com.lukeware.repositories.bankAccount;
 
 import java.time.LocalDate;
 
+/**
+ * @author Diego Morais
+ */
 final class BankAccountMapperBuilder {
 
   private static BankAccountMapperBuilder bankAccountMapperBuilder;
   private String identifierCode;
+  private String customerId;
   private boolean active;
   private boolean externalMovement;
   private String type;
@@ -20,10 +24,16 @@ final class BankAccountMapperBuilder {
     return bankAccountMapperBuilder = new BankAccountMapperBuilder();
   }
 
+  public BankAccountMapperBuilder customerId(String customerId) {
+    this.customerId = customerId;
+    return this;
+  }
+
   public BankAccountMapperBuilder identifierCode(String identifierCode) {
     this.identifierCode = identifierCode;
     return this;
   }
+
 
   public BankAccountMapperBuilder active(boolean active) {
     this.active = active;

@@ -22,15 +22,17 @@ final record BankAccountRegisterDsGateway(
 
   @Override
   public Set<BankAccountDsResponse> findAll(String identifierCode) {
-    return bankAccountRepository.findAllByIdentifierCode(identifierCode).stream().map(this::toResponse).collect(Collectors.toSet());
+    return bankAccountRepository.findAllByIdentifierCode(identifierCode).stream().map(this::toResponse)
+                                .collect(Collectors.toSet());
   }
 
   private BankAccountDsResponse toResponse(BankAccountMapper it) {
-    return new BankAccountDsResponse(it.getIdentifierCode(), it.isActive(), it.isExternalMovement(), it.getType(), it.getOpenDate(), it.getLastMoveDate());
+    return new BankAccountDsResponse(it.getIdentifierCode(), it.getCustomerId(), it.isActive(), it.isExternalMovement(), it.getType(), it.getOpenDate(), it.getLastMoveDate());
   }
 
   private BankAccountMapper toMapper(BankAccountDsRequest dataMapper) {
     return BankAccountMapperBuilder.builder()
+                                   .customerId(dataMapper.customerId())
                                    .identifierCode(dataMapper.identifierCode())
                                    .active(dataMapper.active())
                                    .externalMovement(dataMapper.externalMovement())

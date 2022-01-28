@@ -20,31 +20,31 @@ public final class AccountHolderBuilder {
   }
 
   public AccountHolderBuilder identifierCode(String identifierCode) {
-    accountHolderBuilder.identifierCode = identifierCode;
-    return accountHolderBuilder;
+    this.identifierCode = identifierCode;
+    return this;
   }
 
   public AccountHolderBuilder identifierDocument(String identifierDocument) {
-    accountHolderBuilder.identifierDocument = identifierDocument;
-    return accountHolderBuilder;
+    this.identifierDocument = identifierDocument;
+    return this;
   }
 
   public AccountHolderBuilder owner(boolean owner) {
-    accountHolderBuilder.owner = owner;
-    return accountHolderBuilder;
+    this.owner = owner;
+    return this;
   }
 
   public AccountHolderBuilder sequence(int sequence) {
-    accountHolderBuilder.sequence = sequence;
-    return accountHolderBuilder;
+    this.sequence = sequence;
+    return this;
   }
 
 
   public IAccountHolder build() {
-    return new AccountHolder(accountHolderBuilder.identifierDocument,
-                             accountHolderBuilder.identifierCode,
-                             accountHolderBuilder.owner,
-                             accountHolderBuilder.sequence
+    return new AccountHolder(this.identifierDocument,
+                             this.identifierCode,
+                             this.owner,
+                             this.sequence
     );
   }
 

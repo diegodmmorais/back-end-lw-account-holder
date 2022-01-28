@@ -39,6 +39,7 @@ class BankAccountRegisterDsGatewayTest {
   @DisplayName("1 - save new bank account")
   void saveBankAccount() {
     final var accountDsRequest = new BankAccountDsRequest("789123456",
+                                                          "999.999.999-99",
                                                           true,
                                                           false,
                                                           "CHECKING_ACCOUNT_PF",
@@ -61,6 +62,7 @@ class BankAccountRegisterDsGatewayTest {
   @DisplayName("2 - find all bank account")
   void findAllBankAccount() {
     final var accountDsRequest = new BankAccountDsRequest("789123456",
+                                                          "999.999.999-99",
                                                           true,
                                                           false,
                                                           "CHECKING_ACCOUNT_PF",
