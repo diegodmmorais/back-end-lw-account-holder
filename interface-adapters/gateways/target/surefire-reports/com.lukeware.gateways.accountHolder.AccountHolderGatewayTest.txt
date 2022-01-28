@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.lukeware.gateways.accountHolder.AccountHolderGatewayTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.548 s - in com.lukeware.gateways.accountHolder.AccountHolderGatewayTest

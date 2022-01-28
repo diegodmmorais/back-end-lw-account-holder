@@ -1,7 +1,0 @@
-com/lukeware/gateways/bankAccount/IBankAccountRegisterDsGateway.class
-com/lukeware/gateways/accountHolder/AccountHolderGateway.class
-com/lukeware/gateways/bankAccount/BankAccountDsRequest.class
-com/lukeware/gateways/bankAccount/BankAccountGatewayFactory.class
-com/lukeware/gateways/accountHolder/AccountHolderGatewayFactory.class
-com/lukeware/gateways/bankAccount/BankAccountGateway.class
-com/lukeware/gateways/bankAccount/BankAccountDsResponse.class

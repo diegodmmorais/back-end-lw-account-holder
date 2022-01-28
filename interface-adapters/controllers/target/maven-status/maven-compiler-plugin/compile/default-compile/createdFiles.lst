@@ -1,7 +1,0 @@
-com/lukeware/controllers/bankaccount/BankAccountControllerFactory.class
-com/lukeware/controllers/bankaccount/BankAccountResquest.class
-com/lukeware/controllers/customer/CustomerController.class
-com/lukeware/controllers/bankaccount/BankAccountController.class
-com/lukeware/controllers/customer/ICustomerController.class
-com/lukeware/controllers/bankaccount/IBankAccountController.class
-com/lukeware/controllers/customer/CustomerControllerFactory.class
