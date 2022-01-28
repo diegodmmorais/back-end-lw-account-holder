@@ -63,6 +63,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.NC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "SAVINGS_ACCOUNT",
@@ -94,6 +95,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.NC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",
@@ -125,6 +127,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.IC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             false,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",
@@ -156,6 +159,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.IC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             true,
                                                             "CHECKING_ACCOUNT_PF",
@@ -187,6 +191,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.IC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",
@@ -219,6 +224,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.IC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",
@@ -250,6 +256,7 @@ class CustomerInteractorTest {
     final var customerRequest = new CustomerRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.AC);
     final var bankAccountResponse = new BankAccountResponse("789123456",
+                                                            "999.999.999-99",
                                                             true,
                                                             false,
                                                             "CHECKING_ACCOUNT_PF",

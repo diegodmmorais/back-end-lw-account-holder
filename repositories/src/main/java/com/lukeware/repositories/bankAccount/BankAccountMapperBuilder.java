@@ -63,6 +63,7 @@ final class BankAccountMapperBuilder {
   BankAccountMapper build() {
     final var bankAccountMapper = new BankAccountMapper();
     bankAccountMapper.setIdentifierCode(this.identifierCode);
+    bankAccountMapper.setCustomerId(this.customerId);
     bankAccountMapper.setActive(this.active);
     bankAccountMapper.setExternalMovement(this.externalMovement);
     bankAccountMapper.setType(this.type);

@@ -17,6 +17,7 @@ final record BankAccountGateway(IBankAccountRegisterDsGateway accountRegisterDsG
                                         .stream()
                                         .map(banckAccount ->
                                               new BankAccountResponse(banckAccount.identifierCode(),
+                                                                      banckAccount.customerId(),
                                                                       banckAccount.active(),
                                                                       banckAccount.externalMovement(),
                                                                       banckAccount.type(),

@@ -3,6 +3,8 @@ package com.lukeware.application.configuration;
 import com.lukeware.apigateway.accountHolder.AccountHolderGatewayFactory;
 import com.lukeware.apigateway.bankAccount.BankAccountGatewayFactory;
 import com.lukeware.apigateway.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.controllers.bankaccount.BankAccountControllerFactory;
+import com.lukeware.controllers.bankaccount.IBankAccountController;
 import com.lukeware.controllers.customer.CustomerControllerFactory;
 import com.lukeware.controllers.customer.ICustomerController;
 import com.lukeware.presenters.CustomerPresenterFactory;
@@ -56,6 +58,11 @@ class ApplicationBean {
   @Bean
   ICustomerController customerController(ICustomerInputBoundary customerInputBoundary) {
     return CustomerControllerFactory.builder().create(customerInputBoundary);
+  }
+
+  @Bean
+  IBankAccountController bankAccountController(IBankAccountRegisterDsGateway bankAccountRegisterDsGateway) {
+    return BankAccountControllerFactory.builder().create(bankAccountRegisterDsGateway);
   }
 
 }
