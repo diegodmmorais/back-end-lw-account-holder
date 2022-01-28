@@ -51,5 +51,23 @@ Utilizando o framework spring-boot para conexão com o banco de e serviços rest
 > mvn clean install && cd application && mvn spring-boot:run
 
 ### Com chamar o serviço via postman ou via terminal?
+#### Valida se o cliente está ativo
 > curl --location --request GET 'http://localhost:8080/api/v1/customers/active-customer/789123749' \
+--header 'x-identifier-document: 999.999.999-99'
+
+#### Salva a conta bancaria do cliente
+> curl --location --request POST 'http://localhost:8080/api/v1/bank-accounts' \
+--header 'x-identifier-document: 999.999.999-99' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "identifierCode": "789123456",
+    "active": true,
+    "externalMovement": false,
+    "type": "CHECKING_ACCOUNT",
+    "openDate": "01/07/2021",
+    "lastMoveDate": "01/01/2022"
+}'
+
+#### lista as conta bancárias com base no código único do cliente.
+> curl --location --request GET 'http://localhost:8080/api/v1/bank-accounts/789123456' \
 --header 'x-identifier-document: 999.999.999-99'
