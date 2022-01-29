@@ -2,7 +2,7 @@ package com.lukeware.application.controllers.bankaccount;
 
 import com.lukeware.controllers.bankaccount.BankAccountResquest;
 import com.lukeware.controllers.bankaccount.IBankAccountController;
-import com.lukeware.usecases.banckaccount.BankAccountResponse;
+import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -22,7 +22,7 @@ import java.util.Set;
 final record BankAccountApiController(IBankAccountController bankAccountController) {
 
   @PostMapping
-  Optional<BankAccountResponse> save(
+  Optional<BankAccountDsResponse> save(
       @RequestBody BankAccountResquest resquest,
       @RequestHeader("x-identifier-document") String identifierDocument
   ) {
@@ -30,7 +30,7 @@ final record BankAccountApiController(IBankAccountController bankAccountControll
   }
 
   @GetMapping("{code}")
-  Set<BankAccountResponse> findAll(@PathVariable("code") String identifierCode) {
+  Set<BankAccountDsResponse> findAll(@PathVariable("code") String identifierCode) {
     return this.bankAccountController.findAll(identifierCode);
   }
 }

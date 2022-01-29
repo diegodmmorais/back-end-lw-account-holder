@@ -3,7 +3,7 @@ package com.lukeware.application.controllers.bankaccount;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.lukeware.controllers.bankaccount.BankAccountResquest;
 import com.lukeware.controllers.bankaccount.IBankAccountController;
-import com.lukeware.usecases.banckaccount.BankAccountResponse;
+import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -41,7 +41,7 @@ class BankAccountApiControllerTest {
   @Test
   @DisplayName("1 - save bank account")
   void saveBankAccount() throws Exception {
-    final var bankAccountResponse = new BankAccountResponse(
+    final var bankAccountResponse = new BankAccountDsResponse(
         "789123456",
         "999.999.999-999",
         true,
@@ -88,7 +88,7 @@ class BankAccountApiControllerTest {
   @Test
   @DisplayName("2 - find all bank account")
   void findAllBankAccount() throws Exception {
-    final var bankAccountResponse = new BankAccountResponse(
+    final var bankAccountResponse = new BankAccountDsResponse(
         "789123456",
         "999.999.999-999",
         true,

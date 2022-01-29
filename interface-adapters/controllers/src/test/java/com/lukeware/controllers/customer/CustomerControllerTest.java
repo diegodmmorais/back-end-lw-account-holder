@@ -1,7 +1,7 @@
 package com.lukeware.controllers.customer;
 
-import com.lukeware.usecases.customer.CustomerResponse;
-import com.lukeware.usecases.customer.ICustomerInputBoundary;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
+import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.TypeCustomer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -28,7 +28,7 @@ class CustomerControllerTest {
   @Test
   @DisplayName("Validate active customer")
   void validateActiveCustomer() {
-    final var customerResponse = new CustomerResponse("789123456", "999.999.999-999", TypeCustomer.AC);
+    final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-999", TypeCustomer.AC);
     customerResponse.setMessage("Customer is Active");
 
     Mockito.when(this.customerInputBoundary.validateActiveCustomerPf(Mockito.any()))

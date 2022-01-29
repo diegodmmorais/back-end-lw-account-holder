@@ -1,9 +1,10 @@
-package com.lukeware.gateways.bankAccount;
+package com.lukeware.usecases.banckaccount.ds;
 
 import java.time.LocalDate;
 
 /**
- * @author Diego Silva Morais
+ * data structure
+ * @author diegomorais
  */
 public final record BankAccountDsResponse(String identifierCode,
                                           String customerId,

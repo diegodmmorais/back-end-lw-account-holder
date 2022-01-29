@@ -1,21 +1,26 @@
 package com.lukeware.presenters.customer;
 
-import com.lukeware.usecases.customer.CustomerResponse;
-import com.lukeware.usecases.customer.ICustomerPresenter;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
+import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author Diego Morais
  */
-final record CustomerPresenter() implements ICustomerPresenter {
+final record CustomerPresenter() implements ICustomerOutputBoundary {
 
   @Override
-  public CustomerResponse successView(CustomerResponse customerResponse) {
-    customerResponse.setMessage(String.format("Customer is %s", customerResponse.getType().toString()));
-    return customerResponse;
+  public CustomerDsResponse successView(CustomerDsResponse customerDsResponse) {
+    customerDsResponse.setMessage(String.format("Customer is %s", customerDsResponse.getType().toString()));
+    customerDsResponse.setCreateTime(DateTimeFormatter.ofPattern("dd/MM/yyy hh:mm:ss").format(LocalDateTime.now()));
+    return customerDsResponse;
   }
 
   @Override
-  public CustomerResponse failView(CustomerResponse customerResponse, String error) {
-    throw new CustomerPresenterException(String.format("Error customer %s: %s", customerResponse.getIdentifierCode(), error));
+  public CustomerDsResponse failView(CustomerDsResponse customerDsResponse, String error) {
+    throw new CustomerPresenterException(String.format("Error customer %s: %s", customerDsResponse.getIdentifierCode(), error));
   }
 }

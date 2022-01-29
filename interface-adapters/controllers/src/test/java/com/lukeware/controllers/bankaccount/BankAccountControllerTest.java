@@ -1,7 +1,7 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.gateways.bankAccount.BankAccountDsResponse;
-import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -27,7 +27,7 @@ class BankAccountControllerTest {
   BankAccountController bankAccountController;
 
   @Mock
-  IBankAccountRegisterDsGateway bankAccountRegisterDsGateway;
+  IBankAccountRepository bankAccountRepository;
 
 
   @Test
@@ -52,7 +52,7 @@ class BankAccountControllerTest {
         LocalDate.now()
     );
 
-    Mockito.when(this.bankAccountRegisterDsGateway.save(Mockito.any())).thenReturn(Optional.of(bankAccountDsResponse));
+    Mockito.when(this.bankAccountRepository.save(Mockito.any())).thenReturn(Optional.of(bankAccountDsResponse));
 
     final var bankAccountResponse = bankAccountController.save(bankAccountRequest, "789123456");
 
@@ -79,7 +79,7 @@ class BankAccountControllerTest {
         LocalDate.now()
     );
 
-    Mockito.when(this.bankAccountRegisterDsGateway.findAll("789123456"))
+    Mockito.when(this.bankAccountRepository.findAll("789123456"))
            .thenReturn(Stream.of(bankAccountDsResponse).collect(Collectors.toSet()));
 
     final var bankAccountResponses = bankAccountController.findAll("789123456");

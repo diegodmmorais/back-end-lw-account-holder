@@ -1,6 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -16,13 +16,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class BankAccountControllerFactoryTest {
 
   @Mock
-  IBankAccountRegisterDsGateway bankAccountRegisterDsGateway;
+  IBankAccountRepository bankAccountRepository;
 
   @Test
   @DisplayName("1 - Create customer controller")
   void CreateCustomerController() {
 
-    final var bankAccountController = BankAccountControllerFactory.builder().create(bankAccountRegisterDsGateway);
+    final var bankAccountController = BankAccountControllerFactory.builder().create(bankAccountRepository);
 
     Assertions.assertThat(bankAccountController).isNotNull();
   }

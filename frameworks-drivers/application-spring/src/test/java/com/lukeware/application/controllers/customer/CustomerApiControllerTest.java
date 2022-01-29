@@ -1,7 +1,7 @@
 package com.lukeware.application.controllers.customer;
 
 import com.lukeware.controllers.customer.ICustomerController;
-import com.lukeware.usecases.customer.CustomerResponse;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
 import com.lukeware.usecases.customer.TypeCustomer;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,7 +35,7 @@ class CustomerApiControllerTest {
   @Test
   @DisplayName("Validate active customer")
   void teste() throws Exception {
-    final var customerResponse = new CustomerResponse("789123456", "999.999.999-999", TypeCustomer.AC);
+    final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-999", TypeCustomer.AC);
 
     Mockito.when(this.customerController.isActiveCustomer(Mockito.any(), Mockito.any())).thenReturn(customerResponse);
 

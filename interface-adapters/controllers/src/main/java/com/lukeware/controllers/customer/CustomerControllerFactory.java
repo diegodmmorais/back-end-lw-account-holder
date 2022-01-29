@@ -1,6 +1,6 @@
 package com.lukeware.controllers.customer;
 
-import com.lukeware.usecases.customer.ICustomerInputBoundary;
+import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 
 import java.util.Objects;
 

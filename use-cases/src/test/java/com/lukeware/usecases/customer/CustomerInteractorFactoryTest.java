@@ -1,7 +1,8 @@
 package com.lukeware.usecases.customer;
 
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -19,15 +20,15 @@ class CustomerInteractorFactoryTest {
   @Mock
   IAccountHolderGateway accountHolderGateway;
   @Mock
-  IBankAccountGateway bankAccountGateway;
+  IBankAccountRepository bankAccountRepository;
   @Mock
-  ICustomerPresenter customerPresenter;
+  ICustomerOutputBoundary customerPresenter;
 
   @Test
   @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
     final var customerInputBoundary = CustomerInteractorFactory.builder()
-                                                               .create(accountHolderGateway, bankAccountGateway, customerPresenter);
+                                                               .create(accountHolderGateway, bankAccountRepository, customerPresenter);
     Assertions.assertThat(customerInputBoundary).isNotNull();
   }
 

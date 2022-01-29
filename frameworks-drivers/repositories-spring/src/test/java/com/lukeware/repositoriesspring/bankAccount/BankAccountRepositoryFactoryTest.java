@@ -12,15 +12,15 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Bank bankaccount register factory test")
-class BankAccountRegisterDsFactoryTest {
+class BankAccountRepositoryFactoryTest {
 
   @Mock
-  BankAccountRepository bankAccountRepository;
+  BankAccountJpaRepository bankAccountJpaRepository;
 
   @Test
   @DisplayName("1 - create builder bank bankaccount register")
   void createBuilderBankAccountRegister() {
-    final var bankAccountRegisterDsGateway = BankAccountRegisterDsFactory.builder().create(bankAccountRepository);
+    final var bankAccountRegisterDsGateway = BankAccountRepositoryFactory.builder().create(bankAccountJpaRepository);
 
     Assertions.assertThat(bankAccountRegisterDsGateway).isNotNull();
   }

@@ -1,10 +1,10 @@
 package com.lukeware.controllers.customer;
 
-import com.lukeware.usecases.customer.CustomerResponse;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
 
 /**
  * @author diegomorais
  */
 public interface ICustomerController {
-  CustomerResponse isActiveCustomer(String identifierCode, String identifierDocument);
+  CustomerDsResponse isActiveCustomer(String identifierCode, String identifierDocument);
 }

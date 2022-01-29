@@ -7,7 +7,7 @@ import java.util.Set;
 /**
  * @author Diego Morais
  */
-public interface IAccountHolderGateway extends IGateway<String, AccountHolderResponse> {
+public interface IAccountHolderGateway extends IGateway<String, AccountHolderDsResponse> {
   @Override
-  Set<AccountHolderResponse> findAll(String identifierCode);
+  Set<AccountHolderDsResponse> findAll(String identifierCode);
 }

@@ -1,7 +1,7 @@
 package com.lukeware.application.controllers.customer;
 
 import com.lukeware.controllers.customer.ICustomerController;
-import com.lukeware.usecases.customer.CustomerResponse;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 final record CustomerApiController(ICustomerController customerController) {
 
   @GetMapping("active-customer/{code}")
-  CustomerResponse isActiveCustomer(
+  CustomerDsResponse isActiveCustomer(
       @PathVariable("code") String identifierCode,
       @RequestHeader("x-identifier-document") String identifierDocument) {
     return this.customerController.isActiveCustomer(identifierCode, identifierDocument);

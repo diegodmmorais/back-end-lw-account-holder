@@ -1,6 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 
 import java.util.Objects;
 
@@ -21,7 +21,7 @@ public class BankAccountControllerFactory {
     return bankAccountControllerFactory;
   }
 
-  public BankAccountController create(IBankAccountRegisterDsGateway bankAccountRegisterDsGateway) {
-    return new BankAccountController(bankAccountRegisterDsGateway);
+  public BankAccountController create(IBankAccountRepository bankAccountRepository) {
+    return new BankAccountController(bankAccountRepository);
   }
 }

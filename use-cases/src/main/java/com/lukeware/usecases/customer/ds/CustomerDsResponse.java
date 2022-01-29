@@ -1,19 +1,22 @@
-package com.lukeware.usecases.customer;
+package com.lukeware.usecases.customer.ds;
+
+import com.lukeware.usecases.customer.TypeCustomer;
 
 import java.util.Objects;
 
 /**
  * @author Diego Morais
  */
-public final class CustomerResponse {
+public final class CustomerDsResponse {
   private final String identifierCode;
   private final String identifierDocument;
   private final TypeCustomer type;
   private String message;
+  private String createTime;
 
-  public CustomerResponse(String identifierCode,
-                          String identifierDocument,
-                          TypeCustomer type) {
+  public CustomerDsResponse(String identifierCode,
+                            String identifierDocument,
+                            TypeCustomer type) {
     this.identifierCode = identifierCode;
     this.identifierDocument = identifierDocument;
     this.type = type;
@@ -40,11 +43,19 @@ public final class CustomerResponse {
     this.message = message;
   }
 
+  public void setCreateTime(String createTime) {
+    this.createTime = createTime;
+  }
+
+  public String getCreateTime() {
+    return createTime;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
-    CustomerResponse that = (CustomerResponse) o;
+    CustomerDsResponse that = (CustomerDsResponse) o;
     return Objects.equals(identifierCode, that.identifierCode) && Objects.equals(identifierDocument, that.identifierDocument) && type == that.type;
   }
 

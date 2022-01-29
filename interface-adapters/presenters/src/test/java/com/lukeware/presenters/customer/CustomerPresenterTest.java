@@ -1,6 +1,6 @@
 package com.lukeware.presenters.customer;
 
-import com.lukeware.usecases.customer.CustomerResponse;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
 import com.lukeware.usecases.customer.TypeCustomer;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ class CustomerPresenterTest {
   @Test
   void successView() {
     /* preparation */
-    final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.AC);
+    final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.AC);
 
     /* execution */
     final var response = customerPresenter.successView(customerResponse);
@@ -33,7 +33,7 @@ class CustomerPresenterTest {
   @Test
   void failView() {
     /* preparation */
-    final var customerResponse = new CustomerResponse("789123456", "999.999.999-99", TypeCustomer.AC);
+    final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.AC);
 
     /* execution/validation */
     Assertions.assertThatThrownBy(() -> customerPresenter.failView(customerResponse, "Customer not found"))

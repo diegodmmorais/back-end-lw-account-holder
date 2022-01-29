@@ -1,4 +1,4 @@
-package com.lukeware.gateways.bankAccount;
+package com.lukeware.usecases.banckaccount.ds;
 
 import java.time.LocalDate;
 

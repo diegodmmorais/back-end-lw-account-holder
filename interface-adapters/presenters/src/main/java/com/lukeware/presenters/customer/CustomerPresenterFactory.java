@@ -1,6 +1,6 @@
 package com.lukeware.presenters.customer;
 
-import com.lukeware.usecases.customer.ICustomerPresenter;
+import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public class CustomerPresenterFactory {
     return CustomerPresenterFactory;
   }
 
-  public ICustomerPresenter create() {
+  public ICustomerOutputBoundary create() {
     return new CustomerPresenter();
   }
 

@@ -5,16 +5,14 @@ import com.lukeware.controllers.bankaccount.IBankAccountController;
 import com.lukeware.controllers.customer.CustomerControllerFactory;
 import com.lukeware.controllers.customer.ICustomerController;
 import com.lukeware.gateways.accountHolder.AccountHolderGatewayFactory;
-import com.lukeware.gateways.bankAccount.BankAccountGatewayFactory;
-import com.lukeware.gateways.bankAccount.IBankAccountRegisterDsGateway;
 import com.lukeware.presenters.customer.CustomerPresenterFactory;
-import com.lukeware.repositoriesspring.bankAccount.BankAccountRegisterDsFactory;
-import com.lukeware.repositoriesspring.bankAccount.BankAccountRepository;
+import com.lukeware.repositoriesspring.bankAccount.BankAccountJpaRepository;
+import com.lukeware.repositoriesspring.bankAccount.BankAccountRepositoryFactory;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import com.lukeware.usecases.customer.CustomerInteractorFactory;
-import com.lukeware.usecases.customer.ICustomerInputBoundary;
-import com.lukeware.usecases.customer.ICustomerPresenter;
+import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
+import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,30 +27,25 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 class ApplicationBean {
 
   @Bean
-  ICustomerPresenter createCustomerPresenter() {
+  ICustomerOutputBoundary customerOutputBoundary() {
     return CustomerPresenterFactory.builder().create();
   }
 
   @Bean
-  IAccountHolderGateway createAccountHolderGateway() {
+  IAccountHolderGateway accountHolderGateway() {
     return AccountHolderGatewayFactory.builder().create();
   }
 
   @Bean
-  IBankAccountRegisterDsGateway bankAccountRegisterDsGateway(BankAccountRepository bankAccountRepository) {
-    return BankAccountRegisterDsFactory.builder().create(bankAccountRepository);
+  IBankAccountRepository bankAccountRepository(BankAccountJpaRepository bankAccountJpaRepository) {
+    return BankAccountRepositoryFactory.builder().create(bankAccountJpaRepository);
   }
 
   @Bean
-  IBankAccountGateway createBankAccountGateway(IBankAccountRegisterDsGateway bankAccountRepository) {
-    return BankAccountGatewayFactory.builder().create(bankAccountRepository);
-  }
-
-  @Bean
-  ICustomerInputBoundary createCustomerInputBoundary(IAccountHolderGateway accountHolderGateway,
-                                                     IBankAccountGateway bankAccountGateway,
-                                                     ICustomerPresenter customerPresenter) {
-    return CustomerInteractorFactory.builder().create(accountHolderGateway, bankAccountGateway, customerPresenter);
+  ICustomerInputBoundary customerInputBoundary(IAccountHolderGateway accountHolderGateway,
+                                               IBankAccountRepository bankAccountRepository,
+                                               ICustomerOutputBoundary customerPresenter) {
+    return CustomerInteractorFactory.builder().create(accountHolderGateway, bankAccountRepository, customerPresenter);
   }
 
   @Bean
@@ -61,8 +54,8 @@ class ApplicationBean {
   }
 
   @Bean
-  IBankAccountController bankAccountController(IBankAccountRegisterDsGateway bankAccountRegisterDsGateway) {
-    return BankAccountControllerFactory.builder().create(bankAccountRegisterDsGateway);
+  IBankAccountController bankAccountController(IBankAccountRepository bankAccountRepository) {
+    return BankAccountControllerFactory.builder().create(bankAccountRepository);
   }
 
 }

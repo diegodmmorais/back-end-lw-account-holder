@@ -1,6 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.usecases.banckaccount.BankAccountResponse;
+import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
 import java.util.Optional;
 import java.util.Set;
@@ -10,8 +10,8 @@ import java.util.Set;
  */
 public interface IBankAccountController {
 
-  Optional<BankAccountResponse> save(BankAccountResquest resquest, String identifierDocument);
+  Optional<BankAccountDsResponse> save(BankAccountResquest resquest, String identifierDocument);
 
-  Set<BankAccountResponse> findAll(String identifierCode);
+  Set<BankAccountDsResponse> findAll(String identifierCode);
 
 }

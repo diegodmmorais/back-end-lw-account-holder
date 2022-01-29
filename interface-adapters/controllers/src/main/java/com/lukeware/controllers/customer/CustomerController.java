@@ -1,8 +1,8 @@
 package com.lukeware.controllers.customer;
 
-import com.lukeware.usecases.customer.CustomerRequest;
-import com.lukeware.usecases.customer.CustomerResponse;
-import com.lukeware.usecases.customer.ICustomerInputBoundary;
+import com.lukeware.usecases.customer.ds.CustomerDsRequest;
+import com.lukeware.usecases.customer.ds.CustomerDsResponse;
+import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 
 /**
  * @author Diego Morais
@@ -10,8 +10,8 @@ import com.lukeware.usecases.customer.ICustomerInputBoundary;
 final record CustomerController(ICustomerInputBoundary customerInputBoundary) implements ICustomerController {
 
   @Override
-  public CustomerResponse isActiveCustomer(String identifierCode, String identifierDocument) {
-    return this.customerInputBoundary.validateActiveCustomerPf(new CustomerRequest(identifierCode, identifierDocument));
+  public CustomerDsResponse isActiveCustomer(String identifierCode, String identifierDocument) {
+    return this.customerInputBoundary.validateActiveCustomerPf(new CustomerDsRequest(identifierCode, identifierDocument));
   }
 
 }
