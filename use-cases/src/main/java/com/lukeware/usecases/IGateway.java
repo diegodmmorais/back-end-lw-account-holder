@@ -5,7 +5,7 @@ import java.util.Set;
 /**
  * @author Diego Morais
  */
-public interface IGateway<S, T> {
+public interface IGateway<I, O> {
 
-  Set<T> findAll(S s);
+  Set<O> findAll(I s);
 }
