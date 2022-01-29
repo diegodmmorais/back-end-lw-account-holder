@@ -127,7 +127,7 @@
 │   │   │           │                   └── BankAccountRepositoryTest.java
 │   │   │           └── resources
 │   │   │               └── application.yml
-│   │   └── rest-client
+│   │   └── services-listeners
 │   │       ├── pom.xml
 │   │       └── src
 │   │           ├── main
@@ -136,8 +136,8 @@
 │   │           │   │       └── lukeware
 │   │           │   │           └── restclients
 │   │           │   │               └── accountHolder
-│   │           │   │                   ├── AccountHolderGateway.java
-│   │           │   │                   └── AccountHolderGatewayFactory.java
+│   │           │   │                   ├── AccountHolderService.java
+│   │           │   │                   └── AccountHolderServiceFactory.java
 │   │           │   └── resources
 │   │           └── test
 │   │               └── java
@@ -145,8 +145,8 @@
 │   │                       └── lukeware
 │   │                           └── restclients
 │   │                               └── accountHolder
-│   │                                   ├── AccountHolderGatewayFactoryTest.java
-│   │                                   └── AccountHolderGatewayTest.java
+│   │                                   ├── AccountHolderServiceFactoryTest.java
+│   │                                   └── AccountHolderServiceTest.java
 │   ├── pom.xml
 │   └── presenters
 │       ├── pom.xml
@@ -216,6 +216,7 @@
                             └── customer
                                 ├── CustomerInteractorFactoryTest.java
                                 └── CustomerInteractorTest.java
+
 
 
 ```
