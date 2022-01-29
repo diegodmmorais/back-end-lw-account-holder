@@ -1,153 +1,180 @@
 ## Estrutura de pasta
 
 ```bach
+.
 ├── Flow-Of-Control.png
 ├── README.md
-├── apigateway
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── com
-│       │   │       └── lukeware
-│       │   │           └── apigateway
-│       │   │               ├── accountHolder
-│       │   │               │   ├── AccountHolderGateway.java
-│       │   │               │   └── AccountHolderGatewayFactory.java
-│       │   │               └── bankAccount
-│       │   │                   ├── BankAccountDsRequest.java
-│       │   │                   ├── BankAccountDsResponse.java
-│       │   │                   ├── BankAccountGateway.java
-│       │   │                   ├── BankAccountGatewayFactory.java
-│       │   │                   └── IBankAccountRegisterDsGateway.java
-│       │   └── resources
-│       └── test
-│           └── java
-│               └── com
-│                   └── lukeware
-│                       └── apigateway
-│                           ├── accountHolder
-│                           │   ├── AccountHolderGatewayFactoryTest.java
-│                           │   └── AccountHolderGatewayTest.java
-│                           └── bankAccount
-│                               ├── BankAccountGatewayFactoryTest.java
-│                               └── BankAccountGatewayTest.java
-├── application
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── com
-│       │   │       └── lukeware
-│       │   │           └── application
-│       │   │               ├── Application.java
-│       │   │               └── configuration
-│       │   │                   └── ApplicationBean.java
-│       │   └── resources
-│       │       └── application.yml
-│       └── test
-│           ├── java
-│           │   └── com
-│           │       └── lukeware
-│           │           └── application
-│           │               └── ApplicationTest.java
-│           └── resources
-│               └── application.yml
-├── controllers
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── com
-│       │   │       └── lukeware
-│       │   │           └── controllers
-│       │   │               ├── bankaccount
-│       │   │               └── customer
-│       │   │                   ├── CustomerController.java
-│       │   │                   ├── CustomerControllerFactory.java
-│       │   │                   └── ICustomerController.java
-│       │   └── resources
-│       └── test
-│           ├── java
-│           │   └── com
-│           │       └── lukeware
-│           │           └── controllers
-│           │               └── customer
-│           │                   ├── CustomerControllerFactoryTest.java
-│           │                   └── CustomerControllerTest.java
-│           └── resources
+├── TREE.md
 ├── entities
+│   ├── pom.xml
 │   └── src
 │       ├── main
 │       │   ├── java
 │       │   │   └── com
 │       │   │       └── lukeware
 │       │   │           └── entities
-│       │   │               ├── account
-│       │   │               │   ├── Account.java
-│       │   │               │   ├── AccountBuilder.java
-│       │   │               │   ├── AccountValidateException.java
-│       │   │               │   ├── IAccount.java
-│       │   │               │   └── TypeAccount.java
-│       │   │               └── accountholder
-│       │   │                   ├── AccountHolder.java
-│       │   │                   ├── AccountHolderBuilder.java
-│       │   │                   └── IAccountHolder.java
+│       │   │               ├── accountholder
+│       │   │               │   ├── AccountHolder.java
+│       │   │               │   ├── AccountHolderBuilder.java
+│       │   │               │   └── IAccountHolder.java
+│       │   │               └── bankaccount
+│       │   │                   ├── BankAccountBuilder.java
+│       │   │                   ├── BankAccountValidateException.java
+│       │   │                   ├── BankBankAccount.java
+│       │   │                   ├── IBankAccount.java
+│       │   │                   └── TypeAccount.java
 │       │   └── resources
 │       └── test
 │           └── java
 │               └── com
 │                   └── lukeware
 │                       └── entities
-│                           └── account
-│                               └── AccountTest.java
+│                           └── bankaccount
+│                               └── BankAccountTest.java
+├── frameworks-drivers
+│   ├── application-spring
+│   │   ├── data
+│   │   │   └── local-test.mv.db
+│   │   ├── pom.xml
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── lukeware
+│   │       │   │           └── application
+│   │       │   │               ├── Application.java
+│   │       │   │               ├── configuration
+│   │       │   │               │   └── ApplicationBean.java
+│   │       │   │               └── controllers
+│   │       │   │                   ├── bankaccount
+│   │       │   │                   │   └── BankAccountApiController.java
+│   │       │   │                   └── customer
+│   │       │   │                       └── CustomerApiController.java
+│   │       │   └── resources
+│   │       │       └── application.yml
+│   │       └── test
+│   │           ├── java
+│   │           │   └── com
+│   │           │       └── lukeware
+│   │           │           └── application
+│   │           │               ├── ApplicationTest.java
+│   │           │               └── controllers
+│   │           │                   ├── bankaccount
+│   │           │                   │   └── BankAccountApiControllerTest.java
+│   │           │                   └── customer
+│   │           │                       └── CustomerApiControllerTest.java
+│   │           └── resources
+│   │               └── application.yml
+│   ├── pom.xml
+│   └── repositories-spring
+│       ├── pom.xml
+│       └── src
+│           ├── main
+│           │   ├── java
+│           │   │   └── com
+│           │   │       └── lukeware
+│           │   │           └── repositoriesspring
+│           │   │               └── bankAccount
+│           │   │                   ├── BankAccountJpaRepository.java
+│           │   │                   ├── BankAccountMapper.java
+│           │   │                   ├── BankAccountMapperBuilder.java
+│           │   │                   ├── BankAccountRepository.java
+│           │   │                   └── BankAccountRepositoryFactory.java
+│           │   └── resources
+│           └── test
+│               ├── java
+│               │   └── com
+│               │       └── lukeware
+│               │           └── repositoriesspring
+│               │               ├── TestApplication.java
+│               │               └── bankAccount
+│               │                   ├── BankAccountMapperTest.java
+│               │                   ├── BankAccountRegisterDsGatewayTest.java
+│               │                   └── BankAccountRepositoryFactoryTest.java
+│               └── resources
+│                   └── application.yml
+├── interface-adapters
+│   ├── controllers
+│   │   ├── pom.xml
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── lukeware
+│   │       │   │           └── controllers
+│   │       │   │               ├── bankaccount
+│   │       │   │               │   ├── BankAccountController.java
+│   │       │   │               │   ├── BankAccountControllerFactory.java
+│   │       │   │               │   ├── BankAccountResquest.java
+│   │       │   │               │   └── IBankAccountController.java
+│   │       │   │               └── customer
+│   │       │   │                   ├── CustomerController.java
+│   │       │   │                   ├── CustomerControllerFactory.java
+│   │       │   │                   └── ICustomerController.java
+│   │       │   └── resources
+│   │       └── test
+│   │           ├── java
+│   │           │   └── com
+│   │           │       └── lukeware
+│   │           │           └── controllers
+│   │           │               ├── bankaccount
+│   │           │               │   ├── BankAccountControllerFactoryTest.java
+│   │           │               │   └── BankAccountControllerTest.java
+│   │           │               └── customer
+│   │           │                   ├── CustomerControllerFactoryTest.java
+│   │           │                   └── CustomerControllerTest.java
+│   │           └── resources
+│   ├── gateways
+│   │   ├── pom.xml
+│   │   └── src
+│   │       ├── main
+│   │       │   ├── java
+│   │       │   │   └── com
+│   │       │   │       └── lukeware
+│   │       │   │           └── gateways
+│   │       │   │               └── accountHolder
+│   │       │   │                   ├── AccountHolderGateway.java
+│   │       │   │                   └── AccountHolderGatewayFactory.java
+│   │       │   └── resources
+│   │       └── test
+│   │           └── java
+│   │               └── com
+│   │                   └── lukeware
+│   │                       └── gateways
+│   │                           └── accountHolder
+│   │                               ├── AccountHolderGatewayFactoryTest.java
+│   │                               └── AccountHolderGatewayTest.java
+│   ├── pom.xml
+│   └── presenters
+│       ├── pom.xml
+│       └── src
+│           ├── main
+│           │   ├── java
+│           │   │   └── com
+│           │   │       └── lukeware
+│           │   │           └── presenters
+│           │   │               ├── bankaccount
+│           │   │               │   ├── BankAccountPresenter.java
+│           │   │               │   ├── BankAccountPresenterException.java
+│           │   │               │   └── BankAccountPresenterFactory.java
+│           │   │               └── customer
+│           │   │                   ├── CustomerPresenter.java
+│           │   │                   ├── CustomerPresenterException.java
+│           │   │                   └── CustomerPresenterFactory.java
+│           │   └── resources
+│           └── test
+│               └── java
+│                   └── com
+│                       └── lukeware
+│                           └── presenters
+│                               ├── bankaccount
+│                               │   ├── BankAccountPresenterFactoryTest.java
+│                               │   └── BankAccountPresenterTest.java
+│                               └── customer
+│                                   ├── CustomerPresenterFactoryTest.java
+│                                   └── CustomerPresenterTest.java
 ├── pom.xml
-├── presenters
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── com
-│       │   │       └── lukeware
-│       │   │           └── presenters
-│       │   │               ├── CustomerPresenter.java
-│       │   │               ├── CustomerPresenterException.java
-│       │   │               └── CustomerPresenterFactory.java
-│       │   └── resources
-│       └── test
-│           └── java
-│               └── com
-│                   └── lukeware
-│                       └── presenters
-│                           ├── CustomerPresenterFactoryTest.java
-│                           └── CustomerPresenterTest.java
-├── repositories
-│   ├── pom.xml
-│   └── src
-│       ├── main
-│       │   ├── java
-│       │   │   └── com
-│       │   │       └── lukeware
-│       │   │           └── repositories
-│       │   │               └── bankAccount
-│       │   │                   ├── BankAccountMapper.java
-│       │   │                   ├── BankAccountMapperBuilder.java
-│       │   │                   ├── BankAccountRegisterDsFactory.java
-│       │   │                   ├── BankAccountRegisterDsGateway.java
-│       │   │                   └── BankAccountRepository.java
-│       │   └── resources
-│       └── test
-│           ├── java
-│           │   └── com
-│           │       └── lukeware
-│           │           └── repositories
-│           │               ├── TestApplication.java
-│           │               └── bankAccount
-│           │                   ├── BankAccountRegisterDsFactoryTest.java
-│           │                   └── BankAccountRegisterDsGatewayTest.java
-│           └── resources
-│               └── application.yml
-└── usecases
+└── use-cases
     ├── pom.xml
     └── src
         ├── main
@@ -156,20 +183,27 @@
         │   │       └── lukeware
         │   │           └── usecases
         │   │               ├── IGateway.java
+        │   │               ├── IOutputBoundary.java
         │   │               ├── accountholder
-        │   │               │   ├── AccountHolderResponse.java
+        │   │               │   ├── AccountHolderDsResponse.java
         │   │               │   └── IAccountHolderGateway.java
         │   │               ├── banckaccount
-        │   │               │   ├── BankAccountResponse.java
-        │   │               │   └── IBankAccountGateway.java
+        │   │               │   ├── IBankAccountMapper.java
+        │   │               │   ├── IBankAccountOutputBoundary.java
+        │   │               │   ├── IBankAccountRepository.java
+        │   │               │   └── ds
+        │   │               │       ├── BankAccountDsRequest.java
+        │   │               │       └── BankAccountDsResponse.java
         │   │               └── customer
         │   │                   ├── CustomerInteractor.java
         │   │                   ├── CustomerInteractorFactory.java
-        │   │                   ├── CustomerRequest.java
-        │   │                   ├── CustomerResponse.java
-        │   │                   ├── ICustomerInputBoundary.java
-        │   │                   ├── ICustomerPresenter.java
-        │   │                   └── TypeCustomer.java
+        │   │                   ├── TypeCustomer.java
+        │   │                   ├── boundary
+        │   │                   │   ├── ICustomerInputBoundary.java
+        │   │                   │   └── ICustomerOutputBoundary.java
+        │   │                   └── ds
+        │   │                       ├── CustomerDsRequest.java
+        │   │                       └── CustomerDsResponse.java
         │   └── resources
         └── test
             └── java
@@ -179,4 +213,5 @@
                             └── customer
                                 ├── CustomerInteractorFactoryTest.java
                                 └── CustomerInteractorTest.java
+
 ```
