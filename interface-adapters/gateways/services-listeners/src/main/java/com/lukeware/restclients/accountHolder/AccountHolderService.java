@@ -12,7 +12,7 @@ import java.util.stream.Stream;
  *
  * @author Diego Morais
  */
-final record AccountHolderGateway() implements IAccountHolderGateway {
+final record AccountHolderService() implements IAccountHolderGateway {
 
 
   private static Set<AccountHolderDsResponse> accountHolders = Stream.of(new AccountHolderDsResponse("789123457", true, 1),

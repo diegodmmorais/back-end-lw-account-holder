@@ -12,16 +12,16 @@ import org.mockito.junit.jupiter.MockitoExtension;
  */
 @ExtendWith(MockitoExtension.class)
 @DisplayName("Account holder gateway Test")
-class AccountHolderGatewayTest {
+class AccountHolderServiceTest {
 
   @InjectMocks
-  AccountHolderGateway accountHolderGateway;
+  AccountHolderService accountHolderService;
 
 
   @Test
   @DisplayName("1 - Find all bankaccount holders")
   void FindAllAccountHolders() {
-    final var accountHolders = accountHolderGateway.findAll("789123457");
+    final var accountHolders = accountHolderService.findAll("789123457");
 
     Assertions.assertThat(accountHolders).isNotNull().isNotEmpty().hasSize(1);
     Assertions.assertThat(accountHolders.stream().findFirst().isPresent()).isTrue();

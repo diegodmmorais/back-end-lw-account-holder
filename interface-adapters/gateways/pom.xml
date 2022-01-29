@@ -16,7 +16,7 @@
 
   <modules>
     <module>repositories</module>
-    <module>rest-client</module>
+    <module>services-listeners</module>
   </modules>
 
 </project>

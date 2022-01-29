@@ -4,14 +4,14 @@ import com.lukeware.controllers.bankaccount.BankAccountControllerFactory;
 import com.lukeware.controllers.bankaccount.IBankAccountController;
 import com.lukeware.controllers.customer.CustomerControllerFactory;
 import com.lukeware.controllers.customer.ICustomerController;
-import com.lukeware.restclients.accountHolder.AccountHolderGatewayFactory;
 import com.lukeware.presenters.bankaccount.BankAccountPresenterFactory;
 import com.lukeware.presenters.customer.CustomerPresenterFactory;
 import com.lukeware.repositories.bankAccount.BankAccountJpaRepository;
 import com.lukeware.repositories.bankAccount.BankAccountRepositoryFactory;
+import com.lukeware.restclients.accountHolder.AccountHolderServiceFactory;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
-import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
 import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
 import com.lukeware.usecases.customer.CustomerInteractorFactory;
 import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
@@ -40,7 +40,7 @@ class ApplicationBean {
 
   @Bean
   IAccountHolderGateway accountHolderGateway() {
-    return AccountHolderGatewayFactory.builder().create();
+    return AccountHolderServiceFactory.builder().create();
   }
 
   @Bean
