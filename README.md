@@ -53,26 +53,26 @@ banco de e serviços rest-api
 
 ### Com chamar o serviço via postman ou via terminal?
 
-#### Valida se o cliente está ativo
-
-> curl --location --request GET 'http://localhost:8080/api/v1/customers/active-customer/789123749' \
---header 'x-identifier-document: 999.999.999-99'
-
 #### Salva a conta bancaria do cliente
 
 > curl --location --request POST 'http://localhost:8080/api/v1/bank-accounts' \
 --header 'x-identifier-document: 999.999.999-99' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-"identifierCode": "789123456",
+"identifierCode": "789123963",
 "active": true,
 "externalMovement": false,
-"type": "CHECKING_ACCOUNT",
+"type": "CHECKING_ACCOUNT_PF",
 "openDate": "01/07/2021",
 "lastMoveDate": "01/01/2022"
 }'
 
 #### lista as conta bancárias com base no código único do cliente.
 
-> curl --location --request GET 'http://localhost:8080/api/v1/bank-accounts/789123456' \
+> curl --location --request GET 'http://localhost:8080/api/v1/bank-accounts/789123963' \
+--header 'x-identifier-document: 999.999.999-99'
+
+#### Valida se o cliente está ativo
+
+> curl --location --request GET 'http://localhost:8080/api/v1/customers/active-customer/789123963' \
 --header 'x-identifier-document: 999.999.999-99'

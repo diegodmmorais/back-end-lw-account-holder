@@ -2,7 +2,7 @@ package com.lukeware.controllers.bankaccount;
 
 import com.lukeware.usecases.banckaccount.IBankAccountMapper;
 import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
-import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -29,7 +29,7 @@ class BankAccountControllerTest {
   BankAccountController bankAccountController;
 
   @Mock
-  IBankAccountRepository bankAccountRepository;
+  IBankAccountGateway bankAccountRepository;
 
   @Mock
   IBankAccountOutputBoundary bankAccountOutputBoundary;

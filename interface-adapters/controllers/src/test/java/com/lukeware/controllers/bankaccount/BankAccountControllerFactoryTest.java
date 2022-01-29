@@ -1,7 +1,7 @@
 package com.lukeware.controllers.bankaccount;
 
 import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
-import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -17,7 +17,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 class BankAccountControllerFactoryTest {
 
   @Mock
-  IBankAccountRepository bankAccountRepository;
+  IBankAccountGateway bankAccountRepository;
   @Mock
   IBankAccountOutputBoundary bankAccountOutputBoundary;
 

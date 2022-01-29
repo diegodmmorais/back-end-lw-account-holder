@@ -1,7 +1,7 @@
 package com.lukeware.controllers.bankaccount;
 
 import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
-import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsRequest;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 /**
  * @author Diego Morais
  */
-final record BankAccountController(IBankAccountRepository accountRepository,
+final record BankAccountController(IBankAccountGateway accountRepository,
                                    IBankAccountOutputBoundary bankAccountOutputBoundary) implements IBankAccountController {
 
   @Override

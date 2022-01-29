@@ -1,6 +1,7 @@
 ## Estrutura de pasta
 
 ```bach
+
 .
 ├── Flow-Of-Control.png
 ├── README.md
@@ -65,34 +66,7 @@
 │   │           │                       └── CustomerApiControllerTest.java
 │   │           └── resources
 │   │               └── application.yml
-│   ├── pom.xml
-│   └── repositories-spring
-│       ├── pom.xml
-│       └── src
-│           ├── main
-│           │   ├── java
-│           │   │   └── com
-│           │   │       └── lukeware
-│           │   │           └── repositoriesspring
-│           │   │               └── bankAccount
-│           │   │                   ├── BankAccountJpaRepository.java
-│           │   │                   ├── BankAccountMapper.java
-│           │   │                   ├── BankAccountMapperBuilder.java
-│           │   │                   ├── BankAccountRepository.java
-│           │   │                   └── BankAccountRepositoryFactory.java
-│           │   └── resources
-│           └── test
-│               ├── java
-│               │   └── com
-│               │       └── lukeware
-│               │           └── repositoriesspring
-│               │               ├── TestApplication.java
-│               │               └── bankAccount
-│               │                   ├── BankAccountMapperTest.java
-│               │                   ├── BankAccountRegisterDsGatewayTest.java
-│               │                   └── BankAccountRepositoryFactoryTest.java
-│               └── resources
-│                   └── application.yml
+│   └── pom.xml
 ├── interface-adapters
 │   ├── controllers
 │   │   ├── pom.xml
@@ -126,24 +100,53 @@
 │   │           └── resources
 │   ├── gateways
 │   │   ├── pom.xml
-│   │   └── src
-│   │       ├── main
-│   │       │   ├── java
-│   │       │   │   └── com
-│   │       │   │       └── lukeware
-│   │       │   │           └── gateways
-│   │       │   │               └── accountHolder
-│   │       │   │                   ├── AccountHolderGateway.java
-│   │       │   │                   └── AccountHolderGatewayFactory.java
-│   │       │   └── resources
-│   │       └── test
-│   │           └── java
-│   │               └── com
-│   │                   └── lukeware
-│   │                       └── gateways
-│   │                           └── accountHolder
-│   │                               ├── AccountHolderGatewayFactoryTest.java
-│   │                               └── AccountHolderGatewayTest.java
+│   │   ├── repositories
+│   │   │   ├── pom.xml
+│   │   │   └── src
+│   │   │       ├── main
+│   │   │       │   ├── java
+│   │   │       │   │   └── com
+│   │   │       │   │       └── lukeware
+│   │   │       │   │           └── repositories
+│   │   │       │   │               └── bankAccount
+│   │   │       │   │                   ├── BankAccountJpaRepository.java
+│   │   │       │   │                   ├── BankAccountMapper.java
+│   │   │       │   │                   ├── BankAccountMapperBuilder.java
+│   │   │       │   │                   ├── BankAccountRepository.java
+│   │   │       │   │                   └── BankAccountRepositoryFactory.java
+│   │   │       │   └── resources
+│   │   │       └── test
+│   │   │           ├── java
+│   │   │           │   └── com
+│   │   │           │       └── lukeware
+│   │   │           │           └── repositories
+│   │   │           │               ├── TestApplication.java
+│   │   │           │               └── bankAccount
+│   │   │           │                   ├── BankAccountMapperTest.java
+│   │   │           │                   ├── BankAccountRepositoryFactoryTest.java
+│   │   │           │                   └── BankAccountRepositoryTest.java
+│   │   │           └── resources
+│   │   │               └── application.yml
+│   │   └── rest-client
+│   │       ├── pom.xml
+│   │       └── src
+│   │           ├── main
+│   │           │   ├── java
+│   │           │   │   └── com
+│   │           │   │       └── lukeware
+│   │           │   │           └── restclients
+│   │           │   │               └── accountHolder
+│   │           │   │                   ├── AccountHolderGateway.java
+│   │           │   │                   └── AccountHolderGatewayFactory.java
+│   │           │   └── resources
+│   │           └── test
+│   │               └── java
+│   │                   └── com
+│   │                       └── lukeware
+│   │                           └── restclients
+│   │                               └── accountHolder
+│   │                                   ├── AccountHolderGatewayFactoryTest.java
+│   │                                   └── AccountHolderGatewayTest.java
 │   ├── pom.xml
 │   └── presenters
 │       ├── pom.xml
@@ -188,9 +191,9 @@
         │   │               │   ├── AccountHolderDsResponse.java
         │   │               │   └── IAccountHolderGateway.java
         │   │               ├── banckaccount
+        │   │               │   ├── IBankAccountGateway.java
         │   │               │   ├── IBankAccountMapper.java
         │   │               │   ├── IBankAccountOutputBoundary.java
-        │   │               │   ├── IBankAccountRepository.java
         │   │               │   └── ds
         │   │               │       ├── BankAccountDsRequest.java
         │   │               │       └── BankAccountDsResponse.java
@@ -213,5 +216,6 @@
                             └── customer
                                 ├── CustomerInteractorFactoryTest.java
                                 └── CustomerInteractorTest.java
+
 
 ```

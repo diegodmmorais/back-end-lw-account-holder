@@ -16,7 +16,6 @@
 
   <modules>
     <module>application-spring</module>
-    <module>repositories-spring</module>
   </modules>
 
 </project>

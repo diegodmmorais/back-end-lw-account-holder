@@ -1,7 +1,7 @@
 package com.lukeware.usecases.customer;
 
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
-import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 
@@ -26,7 +26,7 @@ public final class CustomerInteractorFactory {
   }
 
   public ICustomerInputBoundary create(IAccountHolderGateway accountHolderGateway,
-                                       IBankAccountRepository bankAccountRepository,
+                                       IBankAccountGateway bankAccountRepository,
                                        ICustomerOutputBoundary customerPresenter) {
     return new CustomerInteractor(accountHolderGateway, bankAccountRepository, customerPresenter);
   }

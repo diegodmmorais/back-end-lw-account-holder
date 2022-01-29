@@ -1,7 +1,7 @@
 package com.lukeware.usecases.customer;
 
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
-import com.lukeware.usecases.banckaccount.IBankAccountRepository;
+import com.lukeware.usecases.banckaccount.IBankAccountGateway;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -20,7 +20,7 @@ class CustomerInteractorFactoryTest {
   @Mock
   IAccountHolderGateway accountHolderGateway;
   @Mock
-  IBankAccountRepository bankAccountRepository;
+  IBankAccountGateway bankAccountRepository;
   @Mock
   ICustomerOutputBoundary customerPresenter;
 
