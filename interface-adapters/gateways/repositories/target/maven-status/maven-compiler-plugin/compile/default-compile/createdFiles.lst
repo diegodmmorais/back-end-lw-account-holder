@@ -1,5 +1,0 @@
-com/lukeware/repositories/bankAccount/BankAccountRepository.class
-com/lukeware/repositories/bankAccount/BankAccountRepositoryFactory.class
-com/lukeware/repositories/bankAccount/BankAccountMapperBuilder.class
-com/lukeware/repositories/bankAccount/BankAccountJpaRepository.class
-com/lukeware/repositories/bankAccount/BankAccountMapper.class

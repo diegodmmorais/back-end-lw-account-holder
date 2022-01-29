@@ -42,3 +42,5 @@ hs_err_pid*
 /interface-adapters/gateways/target/
 /interface-adapters/presenters/target/
 /use-cases/target/
+/interface-adapters/gateways/repositories/target/
+/interface-adapters/gateways/services-listeners/target/
