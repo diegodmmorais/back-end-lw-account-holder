@@ -1,5 +1,7 @@
 package com.lukeware.repositoriesspring.bankAccount;
 
+import com.lukeware.usecases.banckaccount.IBankAccountMapper;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,7 @@ import java.util.Objects;
  * @author Diego Morais
  */
 @Entity(name = "bank_account")
-final class BankAccountMapper {
+final class BankAccountMapper implements IBankAccountMapper {
 
   @Id
   @Column(name = "id", nullable = false)
@@ -28,6 +30,7 @@ final class BankAccountMapper {
   private LocalDate openDate;
   private LocalDate lastMoveDate;
 
+  @Override
   public Long getId() {
     return id;
   }
@@ -36,6 +39,7 @@ final class BankAccountMapper {
     this.id = id;
   }
 
+  @Override
   public String getIdentifierCode() {
     return identifierCode;
   }
@@ -44,6 +48,7 @@ final class BankAccountMapper {
     this.identifierCode = identifierCode;
   }
 
+  @Override
   public boolean isActive() {
     return active;
   }
@@ -52,6 +57,7 @@ final class BankAccountMapper {
     this.active = active;
   }
 
+  @Override
   public boolean isExternalMovement() {
     return externalMovement;
   }
@@ -60,6 +66,7 @@ final class BankAccountMapper {
     this.externalMovement = externalMovement;
   }
 
+  @Override
   public String getType() {
     return type;
   }
@@ -68,6 +75,7 @@ final class BankAccountMapper {
     this.type = type;
   }
 
+  @Override
   public LocalDate getOpenDate() {
     return openDate;
   }
@@ -76,6 +84,7 @@ final class BankAccountMapper {
     this.openDate = openDate;
   }
 
+  @Override
   public LocalDate getLastMoveDate() {
     return lastMoveDate;
   }
@@ -84,6 +93,7 @@ final class BankAccountMapper {
     this.lastMoveDate = lastMoveDate;
   }
 
+  @Override
   public String getCustomerId() {
     return customerId;
   }

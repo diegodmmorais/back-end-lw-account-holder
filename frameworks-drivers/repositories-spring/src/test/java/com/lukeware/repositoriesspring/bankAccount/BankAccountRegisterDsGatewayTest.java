@@ -27,11 +27,11 @@ class BankAccountRegisterDsGatewayTest {
   @Autowired
   private TestEntityManager entityManager;
 
-  IBankAccountRepository bankAccountRegisterDsGateway;
+  IBankAccountRepository bankAccountRepository;
 
   @BeforeEach
   void setUp() {
-    bankAccountRegisterDsGateway = new BankAccountRepository(bankAccountJpaRepository);
+    bankAccountRepository = new BankAccountRepository(bankAccountJpaRepository);
   }
 
   @Test
@@ -45,16 +45,17 @@ class BankAccountRegisterDsGatewayTest {
                                                           LocalDate.now().minusDays(90),
                                                           LocalDate.now().minusDays(180));
 
-    final var accountDsResponse = bankAccountRegisterDsGateway.save(accountDsRequest);
+    final var accountDsResponse = bankAccountRepository.save(accountDsRequest);
 
     Assertions.assertThat(accountDsResponse).isNotNull();
     Assertions.assertThat(accountDsResponse.isPresent()).isTrue();
-    Assertions.assertThat(accountDsResponse.get().identifierCode()).isNotNull().isEqualTo("789123456");
-    Assertions.assertThat(accountDsResponse.get().active()).isNotNull().isTrue();
-    Assertions.assertThat(accountDsResponse.get().externalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
-    Assertions.assertThat(accountDsResponse.get().openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
-    Assertions.assertThat(accountDsResponse.get().lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
+    Assertions.assertThat(accountDsResponse.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
+    Assertions.assertThat(accountDsResponse.get().isActive()).isNotNull().isTrue();
+    Assertions.assertThat(accountDsResponse.get().isExternalMovement()).isNotNull().isFalse();
+    Assertions.assertThat(accountDsResponse.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
+    Assertions.assertThat(accountDsResponse.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
+    Assertions.assertThat(accountDsResponse.get().getLastMoveDate()).isNotNull()
+              .isEqualTo(LocalDate.now().minusDays(180));
   }
 
   @Test
@@ -68,19 +69,20 @@ class BankAccountRegisterDsGatewayTest {
                                                           LocalDate.now().minusDays(90),
                                                           LocalDate.now().minusDays(180));
 
-    bankAccountRegisterDsGateway.save(accountDsRequest);
+    bankAccountRepository.save(accountDsRequest);
 
-    final var accountDsResponses = bankAccountRegisterDsGateway.findAll("789123456");
+    final var accountDsResponses = bankAccountRepository.findAll("789123456");
 
     Assertions.assertThat(accountDsResponses).isNotNull();
     final var accountDsResponse = accountDsResponses.stream().findFirst();
     Assertions.assertThat(accountDsResponse.isPresent()).isTrue();
-    Assertions.assertThat(accountDsResponse.get().identifierCode()).isNotNull().isEqualTo("789123456");
-    Assertions.assertThat(accountDsResponse.get().active()).isNotNull().isTrue();
-    Assertions.assertThat(accountDsResponse.get().externalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().type()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
-    Assertions.assertThat(accountDsResponse.get().openDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
-    Assertions.assertThat(accountDsResponse.get().lastMoveDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(180));
+    Assertions.assertThat(accountDsResponse.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
+    Assertions.assertThat(accountDsResponse.get().isActive()).isNotNull().isTrue();
+    Assertions.assertThat(accountDsResponse.get().isExternalMovement()).isNotNull().isFalse();
+    Assertions.assertThat(accountDsResponse.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
+    Assertions.assertThat(accountDsResponse.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
+    Assertions.assertThat(accountDsResponse.get().getLastMoveDate()).isNotNull()
+              .isEqualTo(LocalDate.now().minusDays(180));
   }
 
 

@@ -5,10 +5,12 @@ import com.lukeware.controllers.bankaccount.IBankAccountController;
 import com.lukeware.controllers.customer.CustomerControllerFactory;
 import com.lukeware.controllers.customer.ICustomerController;
 import com.lukeware.gateways.accountHolder.AccountHolderGatewayFactory;
+import com.lukeware.presenters.bankaccount.BankAccountPresenterFactory;
 import com.lukeware.presenters.customer.CustomerPresenterFactory;
 import com.lukeware.repositoriesspring.bankAccount.BankAccountJpaRepository;
 import com.lukeware.repositoriesspring.bankAccount.BankAccountRepositoryFactory;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
 import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import com.lukeware.usecases.customer.CustomerInteractorFactory;
 import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
@@ -29,6 +31,11 @@ class ApplicationBean {
   @Bean
   ICustomerOutputBoundary customerOutputBoundary() {
     return CustomerPresenterFactory.builder().create();
+  }
+
+  @Bean
+  IBankAccountOutputBoundary bankAccountOutputBoundary() {
+    return BankAccountPresenterFactory.builder().create();
   }
 
   @Bean
@@ -54,8 +61,8 @@ class ApplicationBean {
   }
 
   @Bean
-  IBankAccountController bankAccountController(IBankAccountRepository bankAccountRepository) {
-    return BankAccountControllerFactory.builder().create(bankAccountRepository);
+  IBankAccountController bankAccountController(IBankAccountRepository bankAccountRepository, IBankAccountOutputBoundary bankAccountOutputBoundary) {
+    return BankAccountControllerFactory.builder().create(bankAccountRepository, bankAccountOutputBoundary);
   }
 
 }

@@ -1,5 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
+import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
 import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -17,12 +18,15 @@ class BankAccountControllerFactoryTest {
 
   @Mock
   IBankAccountRepository bankAccountRepository;
+  @Mock
+  IBankAccountOutputBoundary bankAccountOutputBoundary;
 
   @Test
   @DisplayName("1 - Create customer controller")
   void CreateCustomerController() {
 
-    final var bankAccountController = BankAccountControllerFactory.builder().create(bankAccountRepository);
+    final var bankAccountController = BankAccountControllerFactory.builder()
+                                                                  .create(bankAccountRepository, bankAccountOutputBoundary);
 
     Assertions.assertThat(bankAccountController).isNotNull();
   }

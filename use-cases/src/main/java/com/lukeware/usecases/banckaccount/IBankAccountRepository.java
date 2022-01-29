@@ -10,7 +10,7 @@ import java.util.Set;
  * @author Diego Morais
  */
 public interface IBankAccountRepository {
-  Optional<BankAccountDsResponse> save(BankAccountDsRequest dataMapper);
+  Optional<IBankAccountMapper>save(BankAccountDsRequest dataMapper);
 
-  Set<BankAccountDsResponse> findAll(String identifierCode);
+  Set<IBankAccountMapper> findAll(String identifierCode);
 }

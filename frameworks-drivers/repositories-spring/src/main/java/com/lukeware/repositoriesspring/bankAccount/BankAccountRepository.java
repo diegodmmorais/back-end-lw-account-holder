@@ -1,8 +1,8 @@
 package com.lukeware.repositoriesspring.bankAccount;
 
+import com.lukeware.usecases.banckaccount.IBankAccountMapper;
 import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsRequest;
-import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
 import java.util.Optional;
 import java.util.Set;
@@ -15,19 +15,13 @@ final record BankAccountRepository(
     BankAccountJpaRepository bankAccountJpaRepository) implements IBankAccountRepository {
 
   @Override
-  public Optional<BankAccountDsResponse> save(BankAccountDsRequest dataMapper) {
-    final var bankAccountMapper = bankAccountJpaRepository.save(toMapper(dataMapper));
-    return Optional.ofNullable(toResponse(bankAccountMapper));
+  public Optional<IBankAccountMapper> save(BankAccountDsRequest dataMapper) {
+    return Optional.ofNullable(bankAccountJpaRepository.save(toMapper(dataMapper)));
   }
 
   @Override
-  public Set<BankAccountDsResponse> findAll(String identifierCode) {
-    return bankAccountJpaRepository.findAllByIdentifierCode(identifierCode).stream().map(this::toResponse)
-                                   .collect(Collectors.toSet());
-  }
-
-  private BankAccountDsResponse toResponse(BankAccountMapper it) {
-    return new BankAccountDsResponse(it.getIdentifierCode(), it.getCustomerId(), it.isActive(), it.isExternalMovement(), it.getType(), it.getOpenDate(), it.getLastMoveDate());
+  public Set<IBankAccountMapper> findAll(String identifierCode) {
+    return bankAccountJpaRepository.findAllByIdentifierCode(identifierCode).stream().collect(Collectors.toSet());
   }
 
   private BankAccountMapper toMapper(BankAccountDsRequest dataMapper) {

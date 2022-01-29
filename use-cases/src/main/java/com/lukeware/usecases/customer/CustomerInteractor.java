@@ -6,6 +6,7 @@ import com.lukeware.entities.bankaccount.BankAccountBuilder;
 import com.lukeware.entities.bankaccount.IBankAccount;
 import com.lukeware.usecases.accountholder.AccountHolderDsResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountMapper;
 import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
@@ -30,7 +31,7 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
   public CustomerDsResponse validateActiveCustomerPf(CustomerDsRequest customerDsRequest) {
     final var bankAccounts = findAllBankAccount(customerDsRequest);
     final var accounts = bankAccounts.stream()
-                                     .filter(account -> CHECKING_ACCOUNT_PF.equals(account.type()))
+                                     .filter(account -> CHECKING_ACCOUNT_PF.equals(account.getType()))
                                      .map(bankAccount -> getAccount(customerDsRequest, bankAccount))
                                      .collect(Collectors.toSet());
 
@@ -73,11 +74,14 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
 
 
   private Set<BankAccountDsResponse> findAllBankAccount(CustomerDsRequest customerDsRequest) {
-    return this.bankAccountRepository.findAll(customerDsRequest.identifierCode());
+    return this.bankAccountRepository.findAll(customerDsRequest.identifierCode())
+                                     .stream()
+                                     .map(this::toResponse)
+                                     .collect(Collectors.toSet());
   }
 
   private Set<AccountHolderDsResponse> findAllAccountHolders(BankAccountDsResponse bankAccount) {
-    return this.iAccountHolderGateway.findAll(bankAccount.identifierCode());
+    return this.iAccountHolderGateway.findAll(bankAccount.getIdentifierCode());
   }
 
 
@@ -98,13 +102,17 @@ final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
 
   private IBankAccount toAccount(BankAccountDsResponse bankAccount, Set<IAccountHolder> accountHolder) {
     return BankAccountBuilder.builder()
-                             .active(bankAccount.active())
-                             .externalMovement(bankAccount.externalMovement())
-                             .lastMoveDate(bankAccount.lastMoveDate())
-                             .openDate(bankAccount.openDate())
-                             .type(bankAccount.type())
+                             .active(bankAccount.isActive())
+                             .externalMovement(bankAccount.isExternalMovement())
+                             .lastMoveDate(bankAccount.getLastMoveDate())
+                             .openDate(bankAccount.getOpenDate())
+                             .type(bankAccount.getType())
                              .ownersAccount(accountHolder)
                              .build();
+  }
+
+  private BankAccountDsResponse toResponse(IBankAccountMapper it) {
+    return new BankAccountDsResponse(it.getIdentifierCode(), it.getCustomerId(), it.isActive(), it.isExternalMovement(), it.getType(), it.getOpenDate(), it.getLastMoveDate());
   }
 
 

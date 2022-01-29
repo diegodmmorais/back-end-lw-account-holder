@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * @author Diego Morais
  */
-public class CustomerPresenterFactory {
+public final class CustomerPresenterFactory {
 
   private static CustomerPresenterFactory CustomerPresenterFactory;
 

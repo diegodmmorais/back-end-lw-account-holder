@@ -2,6 +2,7 @@ package com.lukeware.usecases.customer;
 
 import com.lukeware.usecases.accountholder.AccountHolderDsResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountMapper;
 import com.lukeware.usecases.banckaccount.IBankAccountRepository;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
@@ -65,18 +66,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.NC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              false,
-                                                              "SAVINGS_ACCOUNT",
-                                                              LocalDate.now(),
-                                                              LocalDate.now()
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("SAVINGS_ACCOUNT");
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now());
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now());
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -91,24 +93,26 @@ class CustomerInteractorTest {
     Assertions.assertThat(response.getIdentifierDocument()).isNotNull().isEqualTo("999.999.999-99");
   }
 
+
   @Test
   @DisplayName("3 - Non-bankaccount holder customer.")
   void nonAccountHolderCustomer() {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.NC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              false,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(180),
-                                                              LocalDate.now().minusDays(90)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
-    final var accountHolderResponse = new AccountHolderDsResponse("789123456", false, 1);
-    final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
 
+    final var accountHolderResponse = new AccountHolderDsResponse("789123456", false, 2);
+    final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
+
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(180));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(90));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -129,18 +133,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.IC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              false,
-                                                              false,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(180),
-                                                              LocalDate.now().minusDays(90)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(180));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(90));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -161,18 +166,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.IC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              true,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(180),
-                                                              LocalDate.now().minusDays(90)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(180));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(90));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -193,18 +199,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.IC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              false,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(170),
-                                                              LocalDate.now().minusDays(90)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(170));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(90));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -226,18 +233,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.IC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              false,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(180),
-                                                              LocalDate.now().minusDays(100)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(180));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(100));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
@@ -258,18 +266,19 @@ class CustomerInteractorTest {
     /* preparation */
     final var customerRequest = new CustomerDsRequest("789123456", "999.999.999-99");
     final var customerResponse = new CustomerDsResponse("789123456", "999.999.999-99", TypeCustomer.AC);
-    final var bankAccountResponse = new BankAccountDsResponse("789123456",
-                                                              "999.999.999-99",
-                                                              true,
-                                                              false,
-                                                              "CHECKING_ACCOUNT_PF",
-                                                              LocalDate.now().minusDays(180),
-                                                              LocalDate.now().minusDays(80)
-    );
-    final var accounts = Stream.of(bankAccountResponse).collect(Collectors.toSet());
+
     final var accountHolderResponse = new AccountHolderDsResponse("789123456", true, 1);
     final var accountHolders = Stream.of(accountHolderResponse).collect(Collectors.toSet());
+    final var bankAccountMapper = Mockito.mock(IBankAccountMapper.class);
+    final var accounts = Stream.of(bankAccountMapper).collect(Collectors.toSet());
 
+    Mockito.lenient().when(bankAccountMapper.getIdentifierCode()).thenReturn("789123456");
+    Mockito.lenient().when(bankAccountMapper.getCustomerId()).thenReturn("999.999.999-99");
+    Mockito.lenient().when(bankAccountMapper.isActive()).thenReturn(true);
+    Mockito.lenient().when(bankAccountMapper.isExternalMovement()).thenReturn(false);
+    Mockito.lenient().when(bankAccountMapper.getType()).thenReturn("CHECKING_ACCOUNT_PF");
+    Mockito.lenient().when(bankAccountMapper.getOpenDate()).thenReturn(LocalDate.now().minusDays(180));
+    Mockito.lenient().when(bankAccountMapper.getLastMoveDate()).thenReturn(LocalDate.now().minusDays(90));
     Mockito.lenient().when(this.bankAccountRepository.findAll("789123456")).thenReturn(accounts);
     Mockito.lenient().when(this.accountHolderGateway.findAll("789123456")).thenReturn(accountHolders);
     Mockito.lenient().when(this.customerPresenter.successView(customerResponse)).thenReturn(customerResponse);
