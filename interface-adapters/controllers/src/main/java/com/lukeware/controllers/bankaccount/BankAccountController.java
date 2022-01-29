@@ -6,7 +6,6 @@ import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 /**
  * @author Diego Morais
@@ -21,26 +20,11 @@ final record BankAccountController(IBankAccountRepository accountRepository) imp
                                                                 resquest.externalMovement(),
                                                                 resquest.type(),
                                                                 resquest.openDate(),
-                                                                resquest.lastMoveDate()))
-                                 .map(ds -> new BankAccountDsResponse(ds.identifierCode(),
-                                                                                 ds.customerId(),
-                                                                                 ds.active(),
-                                                                                 ds.externalMovement(),
-                                                                                 ds.type(),
-                                                                                 ds.openDate(),
-                                                                                 ds.lastMoveDate()));
+                                                                resquest.lastMoveDate()));
   }
 
   @Override
   public Set<BankAccountDsResponse> findAll(String identifierCode) {
-    return this.accountRepository.findAll(identifierCode).stream()
-                                 .map(ds -> new BankAccountDsResponse(ds.identifierCode(),
-                                                                                 ds.customerId(),
-                                                                                 ds.active(),
-                                                                                 ds.externalMovement(),
-                                                                                 ds.type(),
-                                                                                 ds.openDate(),
-                                                                                 ds.lastMoveDate()))
-                                 .collect(Collectors.toSet());
+    return this.accountRepository.findAll(identifierCode);
   }
 }
