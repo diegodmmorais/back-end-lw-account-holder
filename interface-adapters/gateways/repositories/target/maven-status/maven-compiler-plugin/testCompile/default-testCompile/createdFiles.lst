@@ -1,0 +1,4 @@
+com/lukeware/repositories/bankAccount/BankAccountRepositoryTest.class
+com/lukeware/repositories/bankAccount/BankAccountRepositoryFactoryTest.class
+com/lukeware/repositories/bankAccount/BankAccountMapperTest.class
+com/lukeware/repositories/TestApplication.class
