@@ -45,7 +45,7 @@ Nos basearemos em clean architecture.
 #### Qual a linguagem de programação utilizaremos?
 
 Nesse pequeno projeto, utilizaremos apenas Java na versão 17. Utilizando o framework spring-boot para conexão com o
-banco de e serviços rest-api
+banco de dados e serviços rest-api
 
 ### Como executar a aplicação?
 
