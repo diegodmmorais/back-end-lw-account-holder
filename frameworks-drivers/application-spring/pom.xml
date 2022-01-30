@@ -60,15 +60,19 @@
   </dependencies>
 
   <build>
+    <finalName>${project.artifactId}</finalName>
     <plugins>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <mainClass>${spring-boot-maven-plugin.mainClass}</mainClass>
+        </configuration>
         <executions>
           <execution>
-            <configuration>
-              <mainClass>${spring-boot-maven-plugin.mainClass}</mainClass>
-            </configuration>
+            <goals>
+              <goal>repackage</goal>
+            </goals>
           </execution>
         </executions>
       </plugin>
