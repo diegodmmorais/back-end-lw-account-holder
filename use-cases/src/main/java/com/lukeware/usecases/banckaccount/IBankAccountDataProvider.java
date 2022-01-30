@@ -9,7 +9,7 @@ import java.util.Set;
 /**
  * @author Diego Morais
  */
-public interface IBankAccountGateway extends IGateway<String, IBankAccountMapper> {
+public interface IBankAccountDataProvider extends IGateway<String, IBankAccountMapper> {
   Optional<IBankAccountMapper> save(BankAccountDsRequest dataMapper);
 
   Set<IBankAccountMapper> findAll(String identifierCode);

@@ -1,6 +1,7 @@
-package com.lukeware.usecases.banckaccount;
+package com.lukeware.usecases.banckaccount.boundary;
 
 import com.lukeware.usecases.IOutputBoundary;
+import com.lukeware.usecases.banckaccount.IBankAccountMapper;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
 /**

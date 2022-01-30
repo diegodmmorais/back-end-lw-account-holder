@@ -1,7 +1,7 @@
 package com.lukeware.repositories.bankAccount;
 
 import com.lukeware.usecases.banckaccount.IBankAccountMapper;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsRequest;
 
 import java.util.Optional;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
  * @author diegomorais
  */
 final record BankAccountRepository(
-    BankAccountJpaRepository bankAccountJpaRepository) implements IBankAccountGateway {
+    BankAccountJpaRepository bankAccountJpaRepository) implements IBankAccountDataProvider {
 
   @Override
   public Optional<IBankAccountMapper> save(BankAccountDsRequest dataMapper) {

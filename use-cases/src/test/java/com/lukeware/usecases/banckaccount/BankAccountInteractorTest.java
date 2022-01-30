@@ -1,7 +1,7 @@
-package com.lukeware.controllers.bankaccount;
+package com.lukeware.usecases.banckaccount;
 
-import com.lukeware.usecases.banckaccount.IBankAccountMapper;
-import com.lukeware.usecases.banckaccount.boundary.IBankAccountInputBoundary;
+import com.lukeware.usecases.banckaccount.boundary.IBankAccountOutputBoundary;
+import com.lukeware.usecases.banckaccount.ds.BankAccountDsRequest;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -18,17 +18,19 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * @author Diego Morais
+ * @author diegomorais
  */
-@DisplayName("Bank account controller test")
+@DisplayName("Bank account interator test")
 @ExtendWith(MockitoExtension.class)
-class BankAccountControllerTest {
-
+class BankAccountInteractorTest {
   @InjectMocks
-  BankAccountController bankAccountController;
+  BankAccountInteractor bankAccountInteractor;
 
   @Mock
-  IBankAccountInputBoundary bankAccountInputBoundary;
+  IBankAccountDataProvider bankAccountRepository;
+
+  @Mock
+  IBankAccountOutputBoundary bankAccountOutputBoundary;
 
 
   @Test
@@ -55,8 +57,9 @@ class BankAccountControllerTest {
         LocalDate.now().minusDays(90)
     );
 
-    final var bankAccountRequest = new BankAccountResquest(
+    final var bankAccountRequest = new BankAccountDsRequest(
         "789123456",
+        "999.999.999-99",
         true,
         false,
         "CHECKING_ACCOUNT_PF",
@@ -64,10 +67,10 @@ class BankAccountControllerTest {
         LocalDate.now()
     );
 
-    Mockito.when(this.bankAccountInputBoundary.save(Mockito.any(), Mockito.any()))
-           .thenReturn(Optional.of(bankAccountDsResponse));
+    Mockito.when(this.bankAccountRepository.save(Mockito.any())).thenReturn(Optional.of(bankAccountMapper));
+    Mockito.when(this.bankAccountOutputBoundary.successView(Mockito.any())).thenReturn(bankAccountDsResponse);
 
-    final var bankAccountResponse = bankAccountController.save(bankAccountRequest, "789123456");
+    final var bankAccountResponse = bankAccountInteractor.save(bankAccountRequest, "789123456");
 
     Assertions.assertThat(bankAccountResponse).isNotNull();
     Assertions.assertThat(bankAccountResponse.isPresent()).isTrue();
@@ -103,10 +106,11 @@ class BankAccountControllerTest {
         LocalDate.now().minusDays(90)
     );
 
-    Mockito.when(this.bankAccountInputBoundary.findAll("789123456"))
-           .thenReturn(Stream.of(bankAccountDsResponse).collect(Collectors.toSet()));
+    Mockito.when(this.bankAccountRepository.findAll("789123456"))
+           .thenReturn(Stream.of(bankAccountMapper).collect(Collectors.toSet()));
+    Mockito.when(this.bankAccountOutputBoundary.successView(bankAccountMapper)).thenReturn(bankAccountDsResponse);
 
-    final var bankAccountResponses = bankAccountController.findAll("789123456");
+    final var bankAccountResponses = bankAccountInteractor.findAll("789123456");
 
     Assertions.assertThat(bankAccountResponses).isNotNull();
     Assertions.assertThat(bankAccountResponses.isEmpty()).isFalse();

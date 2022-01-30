@@ -7,7 +7,7 @@ import com.lukeware.entities.bankaccount.IBankAccount;
 import com.lukeware.usecases.accountholder.AccountHolderDsResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
 import com.lukeware.usecases.banckaccount.IBankAccountMapper;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 import com.lukeware.usecases.customer.boundary.ICustomerInputBoundary;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
  * @author Diego Morais
  */
 final record CustomerInteractor(IAccountHolderGateway iAccountHolderGateway,
-                                IBankAccountGateway bankAccountRepository,
+                                IBankAccountDataProvider bankAccountRepository,
                                 ICustomerOutputBoundary customerPresenter) implements ICustomerInputBoundary {
 
   private static final String CHECKING_ACCOUNT_PF = "CHECKING_ACCOUNT_PF";

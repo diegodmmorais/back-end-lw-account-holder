@@ -1,6 +1,6 @@
 package com.lukeware.repositories.bankAccount;
 
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsRequest;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -28,7 +28,7 @@ class BankAccountRepositoryTest {
   @Autowired
   BankAccountJpaRepository bankAccountJpaRepository;
 
-  IBankAccountGateway bankAccountRepository;
+  IBankAccountDataProvider bankAccountRepository;
 
   @BeforeEach
   void setUp() {
@@ -46,16 +46,17 @@ class BankAccountRepositoryTest {
                                                           LocalDate.now().minusDays(90),
                                                           LocalDate.now().minusDays(180));
 
-    final var accountDsResponse = bankAccountRepository.save(accountDsRequest);
+    final var bankAccountMapper = bankAccountRepository.save(accountDsRequest);
 
-    Assertions.assertThat(accountDsResponse).isNotNull();
-    Assertions.assertThat(accountDsResponse.isPresent()).isTrue();
-    Assertions.assertThat(accountDsResponse.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
-    Assertions.assertThat(accountDsResponse.get().isActive()).isNotNull().isTrue();
-    Assertions.assertThat(accountDsResponse.get().isExternalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
-    Assertions.assertThat(accountDsResponse.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
-    Assertions.assertThat(accountDsResponse.get().getLastMoveDate()).isNotNull()
+    Assertions.assertThat(bankAccountMapper).isNotNull();
+    Assertions.assertThat(bankAccountMapper.isPresent()).isTrue();
+    Assertions.assertThat(bankAccountMapper.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
+    Assertions.assertThat(bankAccountMapper.get().getCustomerId()).isNotNull().isEqualTo("999.999.999-99");
+    Assertions.assertThat(bankAccountMapper.get().isActive()).isNotNull().isTrue();
+    Assertions.assertThat(bankAccountMapper.get().isExternalMovement()).isNotNull().isFalse();
+    Assertions.assertThat(bankAccountMapper.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
+    Assertions.assertThat(bankAccountMapper.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
+    Assertions.assertThat(bankAccountMapper.get().getLastMoveDate()).isNotNull()
               .isEqualTo(LocalDate.now().minusDays(180));
   }
 
@@ -72,17 +73,18 @@ class BankAccountRepositoryTest {
 
     bankAccountRepository.save(accountDsRequest);
 
-    final var accountDsResponses = bankAccountRepository.findAll("789123456");
+    final var bankAccountMappers = bankAccountRepository.findAll("789123456");
 
-    Assertions.assertThat(accountDsResponses).isNotNull();
-    final var accountDsResponse = accountDsResponses.stream().findFirst();
-    Assertions.assertThat(accountDsResponse.isPresent()).isTrue();
-    Assertions.assertThat(accountDsResponse.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
-    Assertions.assertThat(accountDsResponse.get().isActive()).isNotNull().isTrue();
-    Assertions.assertThat(accountDsResponse.get().isExternalMovement()).isNotNull().isFalse();
-    Assertions.assertThat(accountDsResponse.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
-    Assertions.assertThat(accountDsResponse.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
-    Assertions.assertThat(accountDsResponse.get().getLastMoveDate()).isNotNull()
+    Assertions.assertThat(bankAccountMappers).isNotNull();
+    final var bankAccountsMapper = bankAccountMappers.stream().findFirst();
+    Assertions.assertThat(bankAccountsMapper.isPresent()).isTrue();
+    Assertions.assertThat(bankAccountsMapper.get().getIdentifierCode()).isNotNull().isEqualTo("789123456");
+    Assertions.assertThat(bankAccountsMapper.get().getCustomerId()).isNotNull().isEqualTo("999.999.999-99");
+    Assertions.assertThat(bankAccountsMapper.get().isActive()).isNotNull().isTrue();
+    Assertions.assertThat(bankAccountsMapper.get().isExternalMovement()).isNotNull().isFalse();
+    Assertions.assertThat(bankAccountsMapper.get().getType()).isNotNull().isEqualTo("CHECKING_ACCOUNT_PF");
+    Assertions.assertThat(bankAccountsMapper.get().getOpenDate()).isNotNull().isEqualTo(LocalDate.now().minusDays(90));
+    Assertions.assertThat(bankAccountsMapper.get().getLastMoveDate()).isNotNull()
               .isEqualTo(LocalDate.now().minusDays(180));
   }
 

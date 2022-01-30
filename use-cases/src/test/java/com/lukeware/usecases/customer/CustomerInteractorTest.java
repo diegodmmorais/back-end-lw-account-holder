@@ -3,7 +3,7 @@ package com.lukeware.usecases.customer;
 import com.lukeware.usecases.accountholder.AccountHolderDsResponse;
 import com.lukeware.usecases.accountholder.IAccountHolderGateway;
 import com.lukeware.usecases.banckaccount.IBankAccountMapper;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 import com.lukeware.usecases.customer.boundary.ICustomerOutputBoundary;
 import com.lukeware.usecases.customer.ds.CustomerDsRequest;
 import com.lukeware.usecases.customer.ds.CustomerDsResponse;
@@ -33,7 +33,7 @@ class CustomerInteractorTest {
   @Mock
   IAccountHolderGateway accountHolderGateway;
   @Mock
-  IBankAccountGateway bankAccountRepository;
+  IBankAccountDataProvider bankAccountRepository;
   @Mock
   ICustomerOutputBoundary customerPresenter;
 

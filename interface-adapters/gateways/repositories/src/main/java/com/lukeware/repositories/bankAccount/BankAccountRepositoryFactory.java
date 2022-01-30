@@ -1,6 +1,6 @@
 package com.lukeware.repositories.bankAccount;
 
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 
 import java.util.Objects;
 
@@ -22,7 +22,7 @@ public final class BankAccountRepositoryFactory {
     return bankAccountRepositoryFactory;
   }
 
-  public IBankAccountGateway create(BankAccountJpaRepository bankAccountJpaRepository) {
+  public IBankAccountDataProvider create(BankAccountJpaRepository bankAccountJpaRepository) {
     return new BankAccountRepository(bankAccountJpaRepository);
   }
 

@@ -1,7 +1,8 @@
 package com.lukeware.controllers.bankaccount;
 
-import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
-import com.lukeware.usecases.banckaccount.IBankAccountGateway;
+import com.lukeware.usecases.banckaccount.boundary.IBankAccountInputBoundary;
+import com.lukeware.usecases.banckaccount.boundary.IBankAccountOutputBoundary;
+import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 
 import java.util.Objects;
 
@@ -22,7 +23,7 @@ public class BankAccountControllerFactory {
     return bankAccountControllerFactory;
   }
 
-  public BankAccountController create(IBankAccountGateway bankAccountRepository, IBankAccountOutputBoundary bankAccountOutputBoundary) {
-    return new BankAccountController(bankAccountRepository, bankAccountOutputBoundary);
+  public BankAccountController create(IBankAccountInputBoundary bankAccountInputBoundary) {
+    return new BankAccountController(bankAccountInputBoundary);
   }
 }

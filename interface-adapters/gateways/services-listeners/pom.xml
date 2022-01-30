@@ -10,7 +10,7 @@
 
   <version>0.1.0-SNAPSHOT</version>
   <modelVersion>4.0.0</modelVersion>
-  <groupId>com.lukeware.restclients</groupId>
+  <groupId>com.lukeware.serviceslisteners</groupId>
   <artifactId>services-listeners</artifactId>
 
   <dependencies>

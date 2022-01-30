@@ -1,7 +1,7 @@
 package com.lukeware.presenters.bankaccount;
 
 import com.lukeware.usecases.banckaccount.IBankAccountMapper;
-import com.lukeware.usecases.banckaccount.IBankAccountOutputBoundary;
+import com.lukeware.usecases.banckaccount.boundary.IBankAccountOutputBoundary;
 import com.lukeware.usecases.banckaccount.ds.BankAccountDsResponse;
 
 import java.time.LocalDateTime;

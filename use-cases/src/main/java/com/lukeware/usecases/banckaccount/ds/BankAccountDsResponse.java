@@ -39,56 +39,28 @@ public final class BankAccountDsResponse {
     return identifierCode;
   }
 
-  public void setIdentifierCode(String identifierCode) {
-    this.identifierCode = identifierCode;
-  }
-
   public String getCustomerId() {
     return customerId;
-  }
-
-  public void setCustomerId(String customerId) {
-    this.customerId = customerId;
   }
 
   public boolean isActive() {
     return active;
   }
 
-  public void setActive(boolean active) {
-    this.active = active;
-  }
-
   public boolean isExternalMovement() {
     return externalMovement;
-  }
-
-  public void setExternalMovement(boolean externalMovement) {
-    this.externalMovement = externalMovement;
   }
 
   public String getType() {
     return type;
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
   public LocalDate getOpenDate() {
     return openDate;
   }
 
-  public void setOpenDate(LocalDate openDate) {
-    this.openDate = openDate;
-  }
-
   public LocalDate getLastMoveDate() {
     return lastMoveDate;
-  }
-
-  public void setLastMoveDate(LocalDate lastMoveDate) {
-    this.lastMoveDate = lastMoveDate;
   }
 
   public String getMessage() {
