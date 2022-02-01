@@ -12,17 +12,21 @@ import java.util.Objects;
  */
 public final class CustomerInteractorFactory {
 
-  private static CustomerInteractorFactory customerInteractorFactory;
+  private static CustomerInteractorFactory instance;
 
   private CustomerInteractorFactory() {
     super();
   }
 
-  public synchronized static CustomerInteractorFactory builder() {
-    if (Objects.isNull(customerInteractorFactory)) {
-      customerInteractorFactory = new CustomerInteractorFactory();
+  public static CustomerInteractorFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (CustomerInteractorFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new CustomerInteractorFactory();
+        }
+      }
     }
-    return customerInteractorFactory;
+    return instance;
   }
 
   public ICustomerInputBoundary create(IAccountHolderGateway accountHolderGateway,

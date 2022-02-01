@@ -1,8 +1,6 @@
 package com.lukeware.controllers.bankaccount;
 
 import com.lukeware.usecases.banckaccount.boundary.IBankAccountInputBoundary;
-import com.lukeware.usecases.banckaccount.boundary.IBankAccountOutputBoundary;
-import com.lukeware.usecases.banckaccount.IBankAccountDataProvider;
 
 import java.util.Objects;
 
@@ -10,17 +8,21 @@ import java.util.Objects;
  * @author Diego Morais
  */
 public class BankAccountControllerFactory {
-  private static BankAccountControllerFactory bankAccountControllerFactory;
+  private static BankAccountControllerFactory instance;
 
   private BankAccountControllerFactory() {
     super();
   }
 
-  public synchronized static BankAccountControllerFactory builder() {
-    if (Objects.isNull(bankAccountControllerFactory)) {
-      bankAccountControllerFactory = new BankAccountControllerFactory();
+  public static BankAccountControllerFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (BankAccountControllerFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new BankAccountControllerFactory();
+        }
+      }
     }
-    return bankAccountControllerFactory;
+    return instance;
   }
 
   public BankAccountController create(IBankAccountInputBoundary bankAccountInputBoundary) {

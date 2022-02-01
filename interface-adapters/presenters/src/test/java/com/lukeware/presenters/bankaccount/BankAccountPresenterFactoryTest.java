@@ -13,7 +13,7 @@ class BankAccountPresenterFactoryTest {
   @Test
   @DisplayName("1 - Create bank account presenter")
   void CreateCustomerPresenter() {
-    final var bankAccountOutputBoundary = BankAccountPresenterFactory.builder().create();
+    final var bankAccountOutputBoundary = BankAccountPresenterFactory.getInstance().create();
     Assertions.assertThat(bankAccountOutputBoundary).isNotNull();
   }
 

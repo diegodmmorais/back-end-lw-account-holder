@@ -9,17 +9,21 @@ import java.util.Objects;
  */
 public final class CustomerControllerFactory {
 
-  private static CustomerControllerFactory customerControllerFactory;
+  private static CustomerControllerFactory instance;
 
   private CustomerControllerFactory() {
     super();
   }
 
-  public synchronized static CustomerControllerFactory builder() {
-    if (Objects.isNull(customerControllerFactory)) {
-      customerControllerFactory = new CustomerControllerFactory();
+  public static CustomerControllerFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (CustomerControllerFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new CustomerControllerFactory();
+        }
+      }
     }
-    return customerControllerFactory;
+    return instance;
   }
 
   public CustomerController create(ICustomerInputBoundary iCustomerInputBoundary) {

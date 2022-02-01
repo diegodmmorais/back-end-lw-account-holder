@@ -22,7 +22,7 @@ class CustomerControllerFactoryTest {
   @DisplayName("1 - Create customer controller")
   void CreateCustomerController() {
 
-    final var customerController = CustomerControllerFactory.builder().create(iCustomerInputBoundary);
+    final var customerController = CustomerControllerFactory.getInstance().create(iCustomerInputBoundary);
 
     Assertions.assertThat(customerController).isNotNull();
   }

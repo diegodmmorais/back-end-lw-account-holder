@@ -8,17 +8,22 @@ import java.util.Objects;
  * @author diegomorais
  */
 public final class BankAccountPresenterFactory {
-  private static BankAccountPresenterFactory accountPresenterFactory;
+
+  private static BankAccountPresenterFactory instance;
 
   private BankAccountPresenterFactory() {
     super();
   }
 
-  public static synchronized BankAccountPresenterFactory builder() {
-    if (Objects.isNull(accountPresenterFactory)) {
-      accountPresenterFactory = new BankAccountPresenterFactory();
+  public static BankAccountPresenterFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (BankAccountPresenterFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new BankAccountPresenterFactory();
+        }
+      }
     }
-    return accountPresenterFactory;
+    return instance;
   }
 
   public IBankAccountOutputBoundary create() {

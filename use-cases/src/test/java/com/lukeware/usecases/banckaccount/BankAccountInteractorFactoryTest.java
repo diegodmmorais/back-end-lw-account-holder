@@ -23,7 +23,7 @@ class BankAccountInteractorFactoryTest {
   @Test
   @DisplayName("1 - create Bank account interactor holder gateway")
   void createAccountHolderGateway() {
-    final var bankAccountInputBoundary = BankAccountInteractorFactory.builder()
+    final var bankAccountInputBoundary = BankAccountInteractorFactory.getInstance()
                                                                      .create(bankAccountDataProvider, bankAccountOutputBoundary);
     Assertions.assertThat(bankAccountInputBoundary).isNotNull();
   }

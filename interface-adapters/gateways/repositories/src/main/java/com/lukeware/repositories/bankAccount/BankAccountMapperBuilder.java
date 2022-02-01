@@ -7,7 +7,6 @@ import java.time.LocalDate;
  */
 final class BankAccountMapperBuilder {
 
-  private static BankAccountMapperBuilder bankAccountMapperBuilder;
   private String identifierCode;
   private String customerId;
   private boolean active;
@@ -21,7 +20,7 @@ final class BankAccountMapperBuilder {
   }
 
   static BankAccountMapperBuilder builder() {
-    return bankAccountMapperBuilder = new BankAccountMapperBuilder();
+    return new BankAccountMapperBuilder();
   }
 
   public BankAccountMapperBuilder customerId(String customerId) {

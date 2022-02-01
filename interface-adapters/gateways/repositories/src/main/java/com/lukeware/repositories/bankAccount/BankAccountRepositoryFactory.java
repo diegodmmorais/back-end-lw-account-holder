@@ -9,17 +9,21 @@ import java.util.Objects;
  */
 public final class BankAccountRepositoryFactory {
 
-  private static BankAccountRepositoryFactory bankAccountRepositoryFactory;
+  private static BankAccountRepositoryFactory instance;
 
   private BankAccountRepositoryFactory() {
     super();
   }
 
-  public synchronized static BankAccountRepositoryFactory builder() {
-    if (Objects.isNull(bankAccountRepositoryFactory)) {
-      bankAccountRepositoryFactory = new BankAccountRepositoryFactory();
+  public static BankAccountRepositoryFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (BankAccountRepositoryFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new BankAccountRepositoryFactory();
+        }
+      }
     }
-    return bankAccountRepositoryFactory;
+    return instance;
   }
 
   public IBankAccountDataProvider create(BankAccountJpaRepository bankAccountJpaRepository) {

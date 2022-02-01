@@ -5,7 +5,6 @@ package com.lukeware.entities.accountholder;
  */
 public final class AccountHolderBuilder {
 
-  private static AccountHolderBuilder accountHolderBuilder;
   private String identifierDocument;
   private String identifierCode;
   private boolean owner;
@@ -15,8 +14,8 @@ public final class AccountHolderBuilder {
     super();
   }
 
-  public static synchronized AccountHolderBuilder builder() {
-    return accountHolderBuilder = new AccountHolderBuilder();
+  public static AccountHolderBuilder builder() {
+    return new AccountHolderBuilder();
   }
 
   public AccountHolderBuilder identifierCode(String identifierCode) {

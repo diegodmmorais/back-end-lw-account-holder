@@ -32,45 +32,45 @@ class ApplicationBean {
 
   @Bean
   ICustomerOutputBoundary customerOutputBoundary() {
-    return CustomerPresenterFactory.builder().create();
+    return CustomerPresenterFactory.getInstance().create();
   }
 
   @Bean
   IBankAccountOutputBoundary bankAccountOutputBoundary() {
-    return BankAccountPresenterFactory.builder().create();
+    return BankAccountPresenterFactory.getInstance().create();
   }
 
   @Bean
   IAccountHolderGateway accountHolderGateway() {
-    return AccountHolderServiceFactory.builder().create();
+    return AccountHolderServiceFactory.getInstance().create();
   }
 
   @Bean
   IBankAccountDataProvider bankAccountRepository(BankAccountJpaRepository bankAccountJpaRepository) {
-    return BankAccountRepositoryFactory.builder().create(bankAccountJpaRepository);
+    return BankAccountRepositoryFactory.getInstance().create(bankAccountJpaRepository);
   }
 
   @Bean
   ICustomerInputBoundary customerInputBoundary(IAccountHolderGateway accountHolderGateway,
                                                IBankAccountDataProvider bankAccountRepository,
                                                ICustomerOutputBoundary customerPresenter) {
-    return CustomerInteractorFactory.builder().create(accountHolderGateway, bankAccountRepository, customerPresenter);
+    return CustomerInteractorFactory.getInstance().create(accountHolderGateway, bankAccountRepository, customerPresenter);
   }
 
   @Bean
   ICustomerController customerController(ICustomerInputBoundary customerInputBoundary) {
-    return CustomerControllerFactory.builder().create(customerInputBoundary);
+    return CustomerControllerFactory.getInstance().create(customerInputBoundary);
   }
 
   @Bean
   IBankAccountInputBoundary bankAccountInputBoundary(IBankAccountDataProvider bankAccountDataProvider,
                                                      IBankAccountOutputBoundary bankAccountOutputBoundary) {
-    return BankAccountInteractorFactory.builder().create(bankAccountDataProvider, bankAccountOutputBoundary);
+    return BankAccountInteractorFactory.getInstance().create(bankAccountDataProvider, bankAccountOutputBoundary);
   }
 
   @Bean
   IBankAccountController bankAccountController(IBankAccountInputBoundary bankAccountRepository) {
-    return BankAccountControllerFactory.builder().create(bankAccountRepository);
+    return BankAccountControllerFactory.getInstance().create(bankAccountRepository);
   }
 
 }

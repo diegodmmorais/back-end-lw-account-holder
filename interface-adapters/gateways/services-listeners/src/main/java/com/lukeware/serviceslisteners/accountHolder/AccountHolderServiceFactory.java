@@ -9,17 +9,17 @@ import java.util.Objects;
  */
 public final class AccountHolderServiceFactory {
 
-  private static AccountHolderServiceFactory accountHolderServiceFactory;
+  private static AccountHolderServiceFactory instance;
 
   private AccountHolderServiceFactory() {
     super();
   }
 
-  public static synchronized AccountHolderServiceFactory builder() {
-    if (Objects.isNull(accountHolderServiceFactory)) {
-      accountHolderServiceFactory = new AccountHolderServiceFactory();
+  public static synchronized AccountHolderServiceFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      instance = new AccountHolderServiceFactory();
     }
-    return accountHolderServiceFactory;
+    return instance;
   }
 
   public IAccountHolderGateway create() {

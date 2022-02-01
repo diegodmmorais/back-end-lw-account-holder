@@ -22,7 +22,7 @@ class BankAccountControllerFactoryTest {
   @DisplayName("1 - Create customer controller")
   void CreateCustomerController() {
 
-    final var bankAccountController = BankAccountControllerFactory.builder()
+    final var bankAccountController = BankAccountControllerFactory.getInstance()
                                                                   .create(bankAccountInputBoundary);
 
     Assertions.assertThat(bankAccountController).isNotNull();

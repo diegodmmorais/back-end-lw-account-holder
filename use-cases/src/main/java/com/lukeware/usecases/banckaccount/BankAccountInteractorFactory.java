@@ -9,17 +9,21 @@ import java.util.Objects;
  * @author Diego Morais
  */
 public class BankAccountInteractorFactory {
-  private static BankAccountInteractorFactory bankAccountInteractorFactory;
+  private static BankAccountInteractorFactory instance;
 
   private BankAccountInteractorFactory() {
     super();
   }
 
-  public synchronized static BankAccountInteractorFactory builder() {
-    if (Objects.isNull(bankAccountInteractorFactory)) {
-      bankAccountInteractorFactory = new BankAccountInteractorFactory();
+  public static BankAccountInteractorFactory getInstance() {
+    if (Objects.isNull(instance)) {
+      synchronized (BankAccountInteractorFactory.class) {
+        if (Objects.isNull(instance)) {
+          instance = new BankAccountInteractorFactory();
+        }
+      }
     }
-    return bankAccountInteractorFactory;
+    return instance;
   }
 
   public IBankAccountInputBoundary create(IBankAccountDataProvider bankAccountRepository,

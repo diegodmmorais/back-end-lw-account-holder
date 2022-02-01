@@ -27,7 +27,7 @@ class CustomerInteractorFactoryTest {
   @Test
   @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
-    final var customerInputBoundary = CustomerInteractorFactory.builder()
+    final var customerInputBoundary = CustomerInteractorFactory.getInstance()
                                                                .create(accountHolderGateway, bankAccountRepository, customerPresenter);
     Assertions.assertThat(customerInputBoundary).isNotNull();
   }

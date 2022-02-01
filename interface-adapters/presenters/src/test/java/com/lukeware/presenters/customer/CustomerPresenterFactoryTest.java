@@ -13,7 +13,7 @@ class CustomerPresenterFactoryTest {
   @Test
   @DisplayName("1 - Create customer presenter")
   void CreateCustomerPresenter() {
-    final var customerPresenter = CustomerPresenterFactory.builder().create();
+    final var customerPresenter = CustomerPresenterFactory.getInstance().create();
     Assertions.assertThat(customerPresenter).isNotNull();
   }
 }

@@ -13,7 +13,7 @@ class AccountHolderServiceFactoryTest {
   @Test
   @DisplayName("1 - create bankaccount holder gateway")
   void createAccountHolderGateway() {
-    final var accountHolderGateway = AccountHolderServiceFactory.builder().create();
+    final var accountHolderGateway = AccountHolderServiceFactory.getInstance().create();
     Assertions.assertThat(accountHolderGateway).isNotNull();
   }
 

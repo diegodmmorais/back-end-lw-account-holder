@@ -11,7 +11,6 @@ import java.util.Set;
  */
 public final class BankAccountBuilder {
 
-  private static BankAccountBuilder bankAccountBuilder;
   private final Set<IAccountHolder> ownersAccount = new LinkedHashSet<>();
   private boolean active;
   private boolean externalMovement;
@@ -23,8 +22,8 @@ public final class BankAccountBuilder {
     super();
   }
 
-  public static synchronized BankAccountBuilder builder() {
-    return BankAccountBuilder.bankAccountBuilder = new BankAccountBuilder();
+  public static BankAccountBuilder builder() {
+    return new BankAccountBuilder();
   }
 
   public BankAccountBuilder active(boolean active) {

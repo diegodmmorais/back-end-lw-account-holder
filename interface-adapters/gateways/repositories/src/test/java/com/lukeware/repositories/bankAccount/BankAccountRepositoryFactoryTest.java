@@ -20,7 +20,7 @@ class BankAccountRepositoryFactoryTest {
   @Test
   @DisplayName("1 - create builder bank bankaccount register")
   void createBuilderBankAccountRegister() {
-    final var bankAccountRegisterDsGateway = BankAccountRepositoryFactory.builder().create(bankAccountJpaRepository);
+    final var bankAccountRegisterDsGateway = BankAccountRepositoryFactory.getInstance().create(bankAccountJpaRepository);
 
     Assertions.assertThat(bankAccountRegisterDsGateway).isNotNull();
   }
